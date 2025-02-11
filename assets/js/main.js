@@ -1,11 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Manejo del menú responsive en móviles
+    
     var toggler = document.querySelector(".navbar-toggler");
-    var menu = document.querySelector("#my-nav");
+    var menu = document.querySelector(".navbar-nav");
 
-    toggler.addEventListener("click", function () {
-        menu.classList.toggle("show");
-    });
+    if (toggler && menu) {
+        toggler.addEventListener("click", function () {
+            menu.classList.toggle("menu-open");
+        });
+    }
 
     // Manejo de dropdowns en escritorio (hover) y móviles (clic)
     document.querySelectorAll('.maine-menu .nav-item > a').forEach(item => {
