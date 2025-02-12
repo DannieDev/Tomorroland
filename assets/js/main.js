@@ -76,41 +76,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Lógica para el botón de inicio de sesión
-    let currentPage = window.location.pathname;
-    let loginButton = document.querySelector(".account-btn");
-    let menuItems = document.querySelectorAll(".navbar-nav .nav-item");
-    let searchContainer = document.querySelector(".search-container");
+    setTimeout(() => {
+        const currentPage = window.location.pathname.split("/").pop();
+        const accountButton = document.querySelector(".account-btn");
 
-    if (currentPage.includes("login.html")) {
-        if (loginButton) {
-            loginButton.innerHTML = '<i class="fa-solid fa-user-plus"></i> Registrarse';
-            loginButton.href = "/src/pages/register.html";
+        if (currentPage === "login.html") {
+            accountButton.innerHTML = '<i class="fa fa-user-plus"></i> Regístrate';
+            accountButton.href = "register.html";
+        } else if (currentPage === "register.html") {
+            accountButton.innerHTML = '<i class="fa fa-sign-in-alt"></i> Inicia sesión';
+            accountButton.href = "login.html";
         }
-        menuItems.forEach(item => {
-            if (item.textContent.includes("404")) item.style.display = "none";
-        });
-        if (searchContainer) searchContainer.style.display = "none";
-    }
-
-    if (currentPage.includes("register.html")) {
-        if (loginButton) {
-            loginButton.innerHTML = '<i class="fa-solid fa-user"></i> Iniciar Sesión';
-            loginButton.href = "/src/pages/login.html";
-        }
-        menuItems.forEach(item => {
-            if (item.textContent.includes("404")) item.style.display = "none";
-        });
-        if (searchContainer) searchContainer.style.display = "none";
-    }
-
-    if (currentPage.includes("contact.html")) {
-        if (loginButton) {
-            loginButton.innerHTML = '<i class="fa-solid fa-user"></i> Iniciar Sesión';
-            loginButton.href = "/src/pages/login.html";
-        }
-        menuItems.forEach(item => {
-            if (item.textContent.includes("404")) item.style.display = "none";
-        });
-        if (searchContainer) searchContainer.style.display = "none";
-    }
+    }, 100);
 });

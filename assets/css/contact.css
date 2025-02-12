@@ -6,36 +6,66 @@ body {
 }
 
 .container {
-    padding-top: 5%;
     display: flex;
-    background-image: 
-        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8), black),
-        url("/assets/img/banner-img.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
     justify-content: center;
     align-items: center;
-    flex: 1;
-    flex-direction: column;
-    min-height: calc(100vh - 100px);
-}
-
-.login-box {
-    position: relative;
-    max-width: 400px;
-    width: 90%;
-    padding: 40px;
-    background: rgba(0, 0, 0, 0.5);
-    box-sizing: border-box;
-    box-shadow: 0 5px 10px rgba(58, 152, 255, 0.6);
-    border-radius: 10px;
-    text-align: center;
-    background-size: contain;
+    width: 100%;
+    min-height: 100vh;
+    background-image: url('/assets/img/banner-img.jpg');
+    background-size: cover;
     background-position: center;
+    position: relative;
 }
 
-.login-box button {
+.container .container-filter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8), black);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 5%;
+}
+
+.map {
+    flex: 1;
+    max-width: 45%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.map iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+.contact-structure {
+    flex: 1;
+    max-width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 20px;
+}
+
+.contact-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+    text-align: center;
+}
+
+.contact-box button {
     background: transparent;
     border: none;
     font-size: 16px;
@@ -48,22 +78,23 @@ body {
 }
 
 
-.login-box h2 {
+.contact-box h2 {
     font-family: Arial, sans-serif;
     margin: 0 0 30px;
     padding: 0;
     color: #fff;
     text-align: center;
-    font-size: 3vw;
+    font-size: 22px;
     max-width: 100%;
     white-space: nowrap;
 }
 
-.login-box .user-box {
+.contact-box .contacts-box {
     position: relative;
 }
 
-.login-box .user-box input {
+.contact-box .contacts-box input,
+textarea {
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
@@ -75,7 +106,7 @@ body {
     background: transparent;
 }
 
-.login-box .user-box label {
+.contact-box .contacts-box label {
     position: absolute;
     top: 0;
     left: 0;
@@ -86,16 +117,18 @@ body {
     transition: 0.5s;
 }
 
-.login-box .user-box input:focus~label,
-.login-box .user-box input:valid~label {
+.contact-box .contacts-box input:focus~label,
+.contact-box .contacts-box input:valid~label,
+.contact-box .contacts-box textarea:focus~label,
+.contact-box .contacts-box textarea:valid~label {
     top: -20px;
     left: 0;
     color: #00aeef;
     font-size: 12px;
 }
 
-.login-box form a,
-.login-box button {
+.contact-box form a,
+.contact-box button {
     position: relative;
     display: inline-block;
     padding: 10px 20px;
@@ -111,8 +144,8 @@ body {
 
 }
 
-.login-box a:hover,
-.login-box button:hover {
+.contact-box a:hover,
+.contact-box button:hover {
     background: transparent;
     color: #fff;
     border-radius: 5px;
@@ -123,14 +156,14 @@ body {
         0 0 100px #00aeef;
 }
 
-.login-box a span,
-.login-box button span {
+.contact-box a span,
+.contact-box button span {
     position: absolute;
     display: block;
 }
 
-.login-box a span:nth-child(1),
-.login-box button span:nth-child(1) {
+.contact-box a span:nth-child(1),
+.contact-box button span:nth-child(1) {
     top: 0;
     left: -100%;
     width: 100%;
@@ -150,8 +183,8 @@ body {
     }
 }
 
-.login-box a span:nth-child(2),
-.login-box button span:nth-child(2) {
+.contact-box a span:nth-child(2),
+.contact-box button span:nth-child(2) {
     top: -100%;
     right: 0%;
     width: 2px;
@@ -172,8 +205,8 @@ body {
     }
 }
 
-.login-box a span:nth-child(3),
-.login-box button span:nth-child(3) {
+.contact-box a span:nth-child(3),
+.contact-box button span:nth-child(3) {
     bottom: 0;
     right: -100%;
     width: 100%;
@@ -194,8 +227,8 @@ body {
     }
 }
 
-.login-box a span:nth-child(4),
-.login-box button span:nth-child(4) {
+.contact-box a span:nth-child(4),
+.contact-box button span:nth-child(4) {
     bottom: -100%;
     left: 0;
     width: 2px;
@@ -217,31 +250,35 @@ body {
 }
 
 @media (max-width: 768px) {
-    .login-box {
-        max-width: 90%; /* Ajustar ancho para pantallas pequeñas */
-        padding: 15px; /* Reducir padding en dispositivos pequeños */
-        margin: 0 auto;
+    .container .container-filter {
+
+        flex-direction: column;
+        /* Apila los elementos verticalmente */
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        /* Reducir el padding para móviles */
     }
 
-    .login-box h2 {
-        font-size: 6vw; /* Título más pequeño para móviles, ajustado */
+    .map,
+    .contact-structure {
+
+        max-width: 100%;
+        /* Ocupa el 100% del ancho en móviles */
+        width: 100%;
         margin-bottom: 20px;
+        /* Espacio entre el mapa y el formulario */
     }
 
-    .login-box .user-box input {
-        padding: 12px 20px; /* Más espacio en los inputs */
-        font-size: 16px;
-        margin-bottom: 15px;
+    .map {
+        padding-top: 25%;
+        height: 300px;
+        /* Reducir la altura del mapa en móviles */
     }
 
-    .login-box button {
-        padding: 15px 30px;
-        font-size: 18px;
-        margin-top: 20px;
-        width: 100%; /* Botón más grande en móviles */
-    }
-
-    .container {
-        padding-top: 10%; /* Más espacio superior para separar del header */
+    .contact-box {
+        padding-top: 20%;
+        max-width: 100%;
+        /* El formulario ocupa todo el ancho */
     }
 }

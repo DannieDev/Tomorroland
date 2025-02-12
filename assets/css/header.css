@@ -281,17 +281,13 @@ h2 {
     }
 
     .navbar-nav .nav-item {
-        margin: 10px 0;
-        text-align: left;
-        align-items: flex-start; 
+        margin: 10px 0; /* Reducir este margen */
     }
-
+    
     .navbar-nav .nav-item a {
-        font-size: 20px; /* Tamaño de letra más grande */
-        padding: 1px px; /* Ajustamos el espaciado interno */
-        margin: 3px 0;
-        display: block;
-        padding-left: 20px; 
+        font-size: 18px; /* Tamaño ajustado para mayor legibilidad */
+        padding: 5px 15px; /* Reducir padding interno */
+        margin: 2px 0; /* Menos margen entre títulos */
     }
 
     .navbar-toggler {
@@ -332,6 +328,22 @@ h2 {
         flex-direction: column;
         background: rgba(0, 0, 0, 0.9); /* Fondo más oscuro y sólido */
         padding: 10px;
+    }
+
+    .maine-menu .navbar-nav li {
+        position: relative;
+    }
+
+    .maine-menu .navbar-nav li .dropdown {
+        position: absolute;
+        top: 0;
+        left: 100%; /* Aparece al lado derecho */
+        background: rgba(0, 0, 0, 0.9);
+        width: 220px;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        z-index: 1000;
     }
     
 }
