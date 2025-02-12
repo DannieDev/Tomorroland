@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    
+
     var toggler = document.querySelector(".navbar-toggler");
     var menu = document.querySelector(".navbar-nav");
 
@@ -20,41 +20,50 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    document.querySelectorAll('.maine-menu .nav-item').forEach(item => {
-        let timeout;
-        let dropdown = item.querySelector('.dropdown');
+    const navItems = document.querySelectorAll('.maine-menu .nav-item');
 
-        if (dropdown) {
-            item.addEventListener('mouseenter', () => {
-                clearTimeout(timeout);
-                dropdown.style.display = 'block';
-            });
+    navItems.forEach(item => {
+        const dropdown = item.querySelector('.dropdown');
 
-            item.addEventListener('mouseleave', () => {
-                timeout = setTimeout(() => {
-                    dropdown.style.display = 'none';
-                }, 100);
-            });
-        }
+        // Mostrar el menú al pasar el mouse (hover)
+        item.addEventListener('mouseenter', function () {
+            if (dropdown) dropdown.classList.add('show-dropdown');
+        });
+
+        // Ocultar el menú al quitar el mouse
+        item.addEventListener('mouseleave', function () {
+            if (dropdown) dropdown.classList.remove('show-dropdown');
+        });
     });
 
-    // Cerrar dropdowns al hacer clic fuera de ellos
+    // Cerrar el menú desplegable al hacer clic fuera
     document.addEventListener('click', function (e) {
-        document.querySelectorAll('.maine-menu .nav-item .dropdown').forEach(dropdown => {
-            if (!dropdown.contains(e.target)) {
-                dropdown.style.display = 'none';
+        document.querySelectorAll('.dropdown.show-dropdown').forEach(dropdown => {
+            if (!dropdown.parentElement.contains(e.target)) {
+                dropdown.classList.remove('show-dropdown');
             }
         });
     });
 
     // Cargar dinámicamente Header y Footer
-    let headerPlaceholder = document.getElementById("header-placeholder");
+    const headerPlaceholder = document.getElementById("header-placeholder");
     if (headerPlaceholder) {
         fetch("/src/views/header.html")
             .then(response => response.text())
             .then(data => {
                 headerPlaceholder.innerHTML = data;
-            });
+
+                // Re-ejecutamos el código del botón hamburguesa después de cargar el header
+                const toggler = document.querySelector(".navbar-toggler");
+                const menu = document.querySelector(".navbar-nav");
+
+                if (toggler && menu) {
+                    toggler.addEventListener("click", function () {
+                        menu.classList.toggle("menu-open");
+                    });
+                }
+            })
+            .catch(error => console.error("Error al cargar el header:", error));
     }
 
     let footerContainer = document.getElementById("footer-container");
