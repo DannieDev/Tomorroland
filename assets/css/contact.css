@@ -61,7 +61,7 @@ body {
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
     border-radius: 10px;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 5px 10px rgba(58, 152, 255, 0.6);
     text-align: center;
 }
 
