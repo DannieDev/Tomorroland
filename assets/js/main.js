@@ -20,20 +20,23 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // Abre el Dropdown al pasar el mouser
     const navItems = document.querySelectorAll('.maine-menu .nav-item');
 
     navItems.forEach(item => {
         const dropdown = item.querySelector('.dropdown');
 
-        // Mostrar el menú al pasar el mouse (hover)
-        item.addEventListener('mouseenter', function () {
-            if (dropdown) dropdown.classList.add('show-dropdown');
-        });
+        if (dropdown) {
+            // Mostrar el menú al pasar el mouse
+            item.addEventListener('mouseenter', function () {
+                dropdown.classList.add('show-dropdown');
+            });
 
-        // Ocultar el menú al quitar el mouse
-        item.addEventListener('mouseleave', function () {
-            if (dropdown) dropdown.classList.remove('show-dropdown');
-        });
+            // Ocultar el menú al quitar el mouse
+            item.addEventListener('mouseleave', function () {
+                dropdown.classList.remove('show-dropdown');
+            });
+        }
     });
 
     // Cerrar el menú desplegable al hacer clic fuera
@@ -44,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+
 
     // Cargar dinámicamente Header y Footer
     const headerPlaceholder = document.getElementById("header-placeholder");
@@ -65,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch(error => console.error("Error al cargar el header:", error));
     }
+
 
     let footerContainer = document.getElementById("footer-container");
     if (footerContainer) {
@@ -88,4 +93,29 @@ document.addEventListener("DOMContentLoaded", function () {
             accountButton.href = "login.html";
         }
     }, 100);
+
+    //Carrusel
+    const showCards = document.querySelector(".show-cards");
+    const prevBtn = document.querySelector(".prev");
+    const nextBtn = document.querySelector(".next");
+
+    nextBtn.addEventListener("click", function () {
+        showCards.scrollBy({ left: 300, behavior: "smooth" });
+    });
+
+    prevBtn.addEventListener("click", function () {
+        showCards.scrollBy({ left: -300, behavior: "smooth" });
+    });
+
+    const showCardsMonthly = document.querySelector(".show-cards-monthly");
+    const prevBtnMonthly = document.querySelector(".prev-monthly");
+    const nextBtnMonthly = document.querySelector(".next-monthly");
+
+    nextBtnMonthly.addEventListener("click", function () {
+        showCardsMonthly.scrollBy({ left: 350, behavior: "smooth" });
+    });
+
+    prevBtnMonthly.addEventListener("click", function () {
+        showCardsMonthly.scrollBy({ left: -350, behavior: "smooth" });
+    });
 });

@@ -116,3 +116,31 @@ hr {
 .footer-section ul li a:hover {
     text-decoration: underline;
 }
+
+@media (max-width: 768px) {
+    .logo_footer img,
+    .social-icons {
+        text-align: center;
+        justify-content: center;
+        display: flex;
+        margin-bottom: 20px;
+    }
+    
+    .footer-content {
+        align-items: center; /* Mantener el logo e iconos centrados */
+    }
+    
+    .footer-links {
+        width: 100%;
+        justify-content: flex-start; /* Alinear el contenido de las secciones a la izquierda */
+        text-align: left;
+        padding-left: 20px;
+    }
+    
+    .footer-section h3,
+    .footer-section ul li {
+        text-align: left;
+    }
+    
+    
+}

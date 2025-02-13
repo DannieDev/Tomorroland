@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.8),
+            black),
+        url("/assets/img/banner-img.jpg");
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    flex-direction: column;
+    min-height: calc(100vh - 100px);
+    text-align: center;
+    position: relative;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #000;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+
+h2 {
+    font-family: "PT-Sans-Bold";
+    font-size: 25px;
+    text-transform: uppercase;
+}
+
+.header {
+    background: rgba(200, 200, 200, 0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 0;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin: 0;
+    z-index: 1000;
+}
+
+.card {
+    border: none;
+    background: none;
+    border-radius: 0;
+}
+
+.fh5co-home-banner h2 {
+    font-size: 52px;
+    color: #fff;
+    text-transform: uppercase;
+    max-width: 730px;
+    margin: 0 auto 50px; 
+}
+
+.fh5co-home-banner a {
+    text-transform: uppercase;
+    color: #fff;
+    width: 198px;
+    height: 51px;
+    border-radius: 40px;
+    margin-top: 50px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-sizing: border-box;
+    margin: 50px auto 0 auto; /* Centrado horizontal */
+
+}
+
+.fh5co-home-banner a svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Evita que el SVG interfiera con el hover */
+}
+
+.fh5co-home-banner a:hover {
+    background: rgba(0, 174, 239, 0.5); /* Fondo iluminado */
+    box-shadow: 0 0 30px rgba(0, 174, 239, 0.8);
+    color: #fff;
+}
+
+
+.fh5co-home-banner .center-text {
+    text-align: center;
+    position: relative;
+    top: 35%;
+}
+

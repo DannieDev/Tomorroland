@@ -1,0 +1,98 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #000;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.hero {
+    text-align: center;
+    padding: 150px 20px;
+    background: url('/assets/img/index-portada.webp') no-repeat center center;
+    background-size: cover;
+    color: #fff;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    padding: 15px 30px;
+    font-size: 18px;
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background: linear-gradient(90deg, #feb47b, #ff7e5f);
+}
+
+.events,
+.news {
+    padding: 50px 20px;
+}
+
+h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.event-cards,
+.news-cards {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+}
+
+.event-card,
+.news-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.event-card img,
+.news-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.event-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.info-button,
+.register-button {
+    padding: 10px 20px;
+    border: 1px solid #fff;
+    background: none;
+    color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.info-button:hover,
+.register-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
