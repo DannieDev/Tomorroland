@@ -3,6 +3,7 @@ body {
     height: 100%;
     margin: 0;
     display: flex;
+    flex-direction: column;
 }
 
 .container {
@@ -18,8 +19,8 @@ body {
     align-items: center;
     flex: 1;
     flex-direction: column;
-    min-height: calc(100vh - 100px);
-    
+    min-height: calc(100vh + 150px);
+    padding-bottom: 50px; 
 }
 
 .register-box {
@@ -34,6 +35,7 @@ body {
     text-align: center;
     background-size: contain;
     background-position: center;
+    margin-bottom: 50px; 
 }
 
 .register-box button {
@@ -55,9 +57,10 @@ body {
     padding: 0;
     color: #fff;
     text-align: center;
-    font-size: 3vw;
-    max-width: 100%;
-    white-space: nowrap;
+    font-size: 32px; /* Tamaño grande por defecto */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .register-box .user-box {
@@ -218,3 +221,14 @@ body {
     }
 }
 
+/* Ajuste para vista móvil */
+@media (max-width: 768px) {
+    .register-box h2 {
+        font-size: 26px; /* Igual al tamaño del título en el login */
+    }
+}
+
+/* Para asegurar consistencia con el login */
+.login-box h2 {
+    font-size: 26px; /* Asegurar que ambos formularios tengan el mismo tamaño */
+}

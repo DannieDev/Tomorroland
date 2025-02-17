@@ -94,28 +94,47 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }, 100);
 
-    //Carrusel
-    const showCards = document.querySelector(".show-cards");
-    const prevBtn = document.querySelector(".prev");
-    const nextBtn = document.querySelector(".next");
+    //Migas de Pan
+    const breadcrumbContainer = document.getElementById("breadcrumb-placeholder");
+    if (!breadcrumbContainer) {
+        console.warn("⚠ No se encontró el contenedor de migas de pan.");
+        return;
+    }
 
-    nextBtn.addEventListener("click", function () {
-        showCards.scrollBy({ left: 300, behavior: "smooth" });
-    });
+    // Obtener la página actual
+    let path = window.location.pathname.split("/").pop() || "index.html"; // Si está vacío, asumir "index.html"
+    console.log("Página actual:", path);
 
-    prevBtn.addEventListener("click", function () {
-        showCards.scrollBy({ left: -300, behavior: "smooth" });
-    });
+    let breadcrumbHTML = `<nav class="breadcrumb"><ul>`;
 
-    const showCardsMonthly = document.querySelector(".show-cards-monthly");
-    const prevBtnMonthly = document.querySelector(".prev-monthly");
-    const nextBtnMonthly = document.querySelector(".next-monthly");
+    // Definir rutas y nombres
+    const routes = {
+        "index.html": "Inicio",
+        "login.html": "Login",
+        "register.html": "Registro",
+        "contact.html": "Contacto",
+        "belgica.html": "Tomorrowland Bélgica",
+        "radio.html": "One World Radio",
+        "experience.html": "Experiencias",
+        "404.html": "Página No Encontrada",
+    };
 
-    nextBtnMonthly.addEventListener("click", function () {
-        showCardsMonthly.scrollBy({ left: 350, behavior: "smooth" });
-    });
+    // Si estamos en el index, solo mostrar "Inicio"
+    if (path === "index.html") {
+        breadcrumbHTML += `<li class="active">Inicio</li>`;
+    } else {
+        // Mostrar "Inicio" como enlace y luego la página actual
+        breadcrumbHTML += `<li><a href="/index.html">Inicio</a></li>`;
+        breadcrumbHTML += `<li class="separator"> > </li>`;
+        
+        if (routes[path]) {
+            breadcrumbHTML += `<li class="active">${routes[path]}</li>`;
+        } else {
+            breadcrumbHTML += `<li class="active">Página Desconocida</li>`;
+        }
+    }
 
-    prevBtnMonthly.addEventListener("click", function () {
-        showCardsMonthly.scrollBy({ left: -350, behavior: "smooth" });
-    });
+    breadcrumbHTML += `</ul></nav>`;
+    breadcrumbContainer.innerHTML = breadcrumbHTML;
+    console.log("✅ Migas de pan generadas correctamente.");
 });

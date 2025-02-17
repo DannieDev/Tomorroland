@@ -1,0 +1,54 @@
+/* Estilos para las migas de pan */
+.breadcrumb-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; /* Alineado a la derecha */
+    padding: 8px 20px;
+    /*background: rgba(255, 255, 255, 0.1);  Color de fondo ligero */
+    position: fixed; /* Se mantiene pegado al header */
+    top: 100px; /* Justo debajo del header */
+    right: 0;
+    left: auto;
+    z-index: 99; /* Asegurar visibilidad sobre otros elementos */
+}
+
+/* Espaciado para que no esté pegado al borde derecho */
+.breadcrumb {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 170px; /* Espaciado del borde derecho */
+}
+
+.breadcrumb ul {
+    list-style: none;
+    display: flex;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+}
+
+.breadcrumb li {
+    display: inline;
+}
+
+.breadcrumb .separator {
+    color: #aaa;
+    margin: 0 5px;
+}
+
+.breadcrumb a {
+    color: #00aeef;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb .active {
+    color: #fff;
+    font-weight: bold;
+}

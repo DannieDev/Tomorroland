@@ -107,3 +107,15 @@ h2 {
     top: 35%;
 }
 
+@media screen and (max-width: 768px) {
+    .fh5co-home-banner h2 {
+        font-size: 32px;
+        max-width: 90%;
+    }
+    
+    .fh5co-home-banner a {
+        width: 160px;
+        height: 45px;
+        font-size: 14px;
+    }
+}

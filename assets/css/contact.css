@@ -251,13 +251,13 @@ textarea {
 
 @media (max-width: 768px) {
     .container .container-filter {
-
         flex-direction: column;
         /* Apila los elementos verticalmente */
         justify-content: center;
         align-items: center;
         padding: 20px;
         /* Reducir el padding para móviles */
+        margin-top: 50px;
     }
 
     .map,
@@ -268,17 +268,25 @@ textarea {
         width: 100%;
         margin-bottom: 20px;
         /* Espacio entre el mapa y el formulario */
+        
     }
 
     .map {
         padding-top: 25%;
         height: 300px;
         /* Reducir la altura del mapa en móviles */
+        margin-bottom: 50px;
     }
 
     .contact-box {
         padding-top: 20%;
         max-width: 100%;
         /* El formulario ocupa todo el ancho */
+        min-height: 450px; /* Asegura que tenga más espacio */
+        margin-bottom: 50px;
+    }
+    .container {
+        min-height: calc(100vh + 200px); /* Asegura más espacio en el fondo */
+        padding-bottom: 50px; /* Agrega más espacio inferior */
     }
 }
