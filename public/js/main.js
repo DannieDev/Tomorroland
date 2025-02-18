@@ -21,20 +21,29 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Abre el Dropdown al pasar el mouse
-    const navItems = document.querySelectorAll('.maine-menu .nav-item');
+    const menuItems = document.querySelectorAll(".maine-menu .navbar-nav .nav-item");
 
-    navItems.forEach(item => {
-        const dropdown = item.querySelector('.dropdown');
+    menuItems.forEach(item => {
+        const dropdown = item.querySelector(".dropdown");
 
         if (dropdown) {
-            // Mostrar el menú al pasar el mouse
-            item.addEventListener('mouseenter', function () {
-                dropdown.classList.add('show-dropdown');
+            item.addEventListener("mouseenter", () => {
+                dropdown.classList.add("show-dropdown");
             });
 
-            // Ocultar el menú al quitar el mouse
-            item.addEventListener('mouseleave', function () {
-                dropdown.classList.remove('show-dropdown');
+            item.addEventListener("mouseleave", () => {
+                dropdown.classList.remove("show-dropdown");
+            });
+
+            item.addEventListener("click", (event) => {
+                event.stopPropagation(); // Evita el cierre inmediato por otro evento
+                dropdown.classList.toggle("show-dropdown");
+            });
+
+            document.addEventListener("click", (event) => {
+                if (!item.contains(event.target)) {
+                    dropdown.classList.remove("show-dropdown");
+                }
             });
         }
     });
@@ -64,6 +73,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }, 100);
 
+    // Limpiar el search automáticamente cuando pierde el foco
+    const searchInput = document.querySelector(".search-input");
+
+    if (searchInput) {
+        searchInput.addEventListener("blur", function () {
+            setTimeout(() => {
+                if (!this.matches(":focus")) {
+                    this.value = "";
+                }
+            }, 100);
+        });
+    }
+    
     // Migas de Pan
     const breadcrumbContainer = document.getElementById("breadcrumb-placeholder");
     if (!breadcrumbContainer) {

@@ -44,9 +44,15 @@
         <li class="nav-item"><a class="nav-link" href="/contact">Contacto</a></li>
         <!-- 💡 Contenedor de la derecha con botón de sesión y buscador -->
         <div class="navbar-right">
-          <a href="/auth/login" class="account-btn">
-            <i class="fa fa-sign-in-alt"></i> Iniciar Sesión
-          </a>
+          <% if (usuario) { %>
+            <a href="/auth/logout" class="account-btn">
+              <i class="fa fa-sign-out-alt"></i> Cerrar sesión
+            </a>
+          <% } else { %>
+            <a href="/auth/login" class="account-btn">
+              <i class="fa fa-sign-in-alt"></i> Iniciar Sesión
+            </a>
+          <% } %>
           <div class="search-container">
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
             <input type="text" class="search-input" placeholder="Buscar...">
@@ -56,18 +62,3 @@
     </div>
   </nav>
 </header>
-
-<!-- Limpiar el search -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const searchInput = document.querySelector(".search-input");
-
-    searchInput.addEventListener("blur", function () {
-      setTimeout(() => {
-        if (!this.matches(":focus")) {
-          this.value = "";
-        }
-      }, 100);
-    });
-  });
-</script>

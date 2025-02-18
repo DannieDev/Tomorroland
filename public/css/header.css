@@ -104,11 +104,15 @@ h2 {
 
 .dropdown {
     display: none;
-    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .dropdown.show-dropdown {
     display: block;
+    opacity: 1;
+    visibility: visible;
 }
 
 
