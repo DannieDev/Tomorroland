@@ -1,0 +1,56 @@
+<%- include('../partials/header') %>
+
+<head>
+    <!-- Estilos de la página de Contacto -->
+    <link rel="stylesheet" href="/css/contact.css">
+    <link rel="stylesheet" href="/css/migas_de_pan.css">
+    <script src="/js/main.js"></script>
+    <title>Contacto</title>
+</head>
+
+<div class="container">
+    <!-- Contenedor para las migas de pan -->
+    <div class="breadcrumb-wrapper">
+        <div id="breadcrumb-placeholder"></div>
+    </div>
+
+    <div class="container-filter">
+        <div class="map">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20046.516433898836!2d4.352632201490786!3d51.09342984018698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3ee18dda1c861%3A0xdf44d9e8197edc74!2s2850%20Boom%2C%20B%C3%A9lgica!5e0!3m2!1ses-419!2smx!4v1738363176359!5m2!1ses-419!2smx"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+        <div class="contact-structure">
+            <div class="contact-box">
+                <form action="/procesar" method="post">
+                    <h2>Contáctenos</h2>
+                    <div class="contacts-box">
+                        <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+                        <label for="nombre">Nombre</label>
+                    </div>
+                    <div class="contacts-box">
+                        <input type="email" id="correo" name="correo" autocomplete="email" required>
+                        <label for="correo">Correo</label>
+                    </div>
+                    <div class="contacts-box">
+                        <textarea id="mensaje" name="mensaje" required></textarea>
+                        <label for="mensaje">Mensaje</label>
+                    </div>
+                    <button type="submit">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Enviar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Incluir el footer -->
+<%- include('../partials/footer') %>

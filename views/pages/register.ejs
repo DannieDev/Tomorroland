@@ -1,0 +1,48 @@
+<%- include('../partials/header') %>
+
+<head>
+    <!-- Estilos de la página de Registro -->
+    <link rel="stylesheet" href="/css/register.css">
+    <link rel="stylesheet" href="/css/migas_de_pan.css">
+    <script src="/js/main.js"></script>
+    <title>Registro</title>
+</head>
+
+<div class="container">
+    <!-- Contenedor para las migas de pan -->
+    <div class="breadcrumb-wrapper">
+        <div id="breadcrumb-placeholder"></div>
+    </div>
+
+    <div class="register-box">
+        <h2>Regístrese</h2>
+        <form action="/register" method="POST">
+            <div class="user-box">
+                <input type="text" name="nombre" required>
+                <label>Nombre</label>
+            </div>
+            <div class="user-box">
+                <input type="text" name="apellidos" required>
+                <label>Apellidos</label>
+            </div>
+            <div class="user-box">
+                <input type="email" name="email" required>
+                <label>Correo</label>
+            </div>
+            <div class="user-box">
+                <input type="password" name="password" required>
+                <label>Contraseña</label>
+            </div>
+            <button type="submit">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Registrate
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- Incluir el footer -->
+<%- include('../partials/footer') %>

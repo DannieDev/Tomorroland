@@ -1,19 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('../partials/header') %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/belgica.css">
-    <link rel="stylesheet" href="/assets/css/migas_de_pan.css">
-    <script src="/assets/js/main.js"></script>
-    <title>Tomorrowland Bélgica</title>
-</head>
+    <head>
+        <!-- Estilos de la página Tomorrowland Bélgica -->
+        <link rel="stylesheet" href="/css/belgica.css">
+        <link rel="stylesheet" href="/css/migas_de_pan.css">
+        <script src="/js/main.js"></script>
+    </head>
 
-<body>
-    <!-- Encabezado con menú de navegación -->
-    <div id="header-placeholder"></div>
-    
     <div class="container">
         <!-- Contenedor para las migas de pan -->
         <div class="breadcrumb-wrapper">
@@ -52,19 +45,17 @@
 
             <div class="ticket-item">
                 <div class="content">
-                    <h2>PREVENTA MUNDIA
-                        <p>Pases para festivales y alojamiento en DreamVille</p>
-                        <span class="sold">AGOTADO</span>
-                    </h2>
+                    <h2>PREVENTA MUNDIAL</h2>
+                    <p>Pases para festivales y alojamiento en DreamVille</p>
+                    <span class="sold">AGOTADO</span>
                 </div>
             </div>
 
             <div class="ticket-item">
                 <div class="content">
-                    <h2>PAQUETES DE VIAJE DE GLOBAL JOURNEY
-                        <p>Pases y transporte oficial</p>
-                        <span class="sold">AGOTADO</span>
-                    </h2>
+                    <h2>PAQUETES DE VIAJE DE GLOBAL JOURNEY</h2>
+                    <p>Pases y transporte oficial</p>
+                    <span class="sold">AGOTADO</span>
                 </div>
             </div>
         </section>
@@ -73,7 +64,7 @@
             <h2>Descubrir</h2>
             <div class="discover-grid">
                 <div class="discover-card">
-                    <img src="/assets/img/Festival.jpg" alt="Pases y Paquetes">
+                    <img src="/img/Festival.jpg" alt="Pases y Paquetes">
                     <div class="overlay">
                         <h2>Pases y Paquetes</h2>
                         <p>Descubre todos los tipos de entradas disponibles para Tomorrowland Belgium 2025.</p>
@@ -81,7 +72,7 @@
                     </div>
                 </div>
                 <div class="discover-card">
-                    <img src="/assets/img/Festival1.jpg" alt="Esto es Tomorrowland">
+                    <img src="/img/Festival1.jpg" alt="Esto es Tomorrowland">
                     <div class="overlay">
                         <h2>Esto es Tomorrowland</h2>
                         <p>Más información sobre Tomorrowland Bélgica, DreamVille, Global Journey y el mundo de
@@ -90,7 +81,7 @@
                     </div>
                 </div>
                 <div class="discover-card">
-                    <img src="/assets/img/Festival2.jpg" alt="Información de ventas">
+                    <img src="/img/Festival2.jpg" alt="Información de ventas">
                     <div class="overlay">
                         <h2>Información de ventas</h2>
                         <p>Descubre cuándo y cómo puedes comprar pases y paquetes para Tomorrowland Bélgica 2025.</p>
@@ -99,12 +90,5 @@
                 </div>
             </div>
         </section>
-
+        <%- include('../partials/footer') %>
     </div>
-
-    <!--Footer-->
-    <div id="footer-container"></div>
-
-</body>
-
-</html>

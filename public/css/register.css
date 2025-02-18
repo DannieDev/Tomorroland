@@ -3,6 +3,7 @@ body {
     height: 100%;
     margin: 0;
     display: flex;
+    flex-direction: column;
 }
 
 .container {
@@ -10,7 +11,7 @@ body {
     display: flex;
     background-image: 
         linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8), black),
-        url("/assets/img/banner-img.jpg");
+        url("/img/banner-img.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -18,10 +19,11 @@ body {
     align-items: center;
     flex: 1;
     flex-direction: column;
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh + 150px);
+    padding-bottom: 50px; 
 }
 
-.login-box {
+.register-box {
     position: relative;
     max-width: 400px;
     width: 90%;
@@ -33,9 +35,10 @@ body {
     text-align: center;
     background-size: contain;
     background-position: center;
+    margin-bottom: 50px; 
 }
 
-.login-box button {
+.register-box button {
     background: transparent;
     border: none;
     font-size: 16px;
@@ -48,22 +51,23 @@ body {
 }
 
 
-.login-box h2 {
+.register-box h2 {
     font-family: Arial, sans-serif;
     margin: 0 0 30px;
     padding: 0;
     color: #fff;
     text-align: center;
-    font-size: 3vw;
-    max-width: 100%;
-    white-space: nowrap;
+    font-size: 32px; /* Tamaño grande por defecto */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.login-box .user-box {
+.register-box .user-box {
     position: relative;
 }
 
-.login-box .user-box input {
+.register-box .user-box input {
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
@@ -75,7 +79,7 @@ body {
     background: transparent;
 }
 
-.login-box .user-box label {
+.register-box .user-box label {
     position: absolute;
     top: 0;
     left: 0;
@@ -86,16 +90,16 @@ body {
     transition: 0.5s;
 }
 
-.login-box .user-box input:focus~label,
-.login-box .user-box input:valid~label {
+.register-box .user-box input:focus~label,
+.register-box .user-box input:valid~label {
     top: -20px;
     left: 0;
     color: #00aeef;
     font-size: 12px;
 }
 
-.login-box form a,
-.login-box button {
+.register-box form a,
+.register-box button {
     position: relative;
     display: inline-block;
     padding: 10px 20px;
@@ -111,8 +115,8 @@ body {
 
 }
 
-.login-box a:hover,
-.login-box button:hover {
+.register-box a:hover,
+.register-box button:hover {
     background: transparent;
     color: #fff;
     border-radius: 5px;
@@ -123,14 +127,14 @@ body {
         0 0 100px #00aeef;
 }
 
-.login-box a span,
-.login-box button span {
+.register-box a span,
+.register-box button span {
     position: absolute;
     display: block;
 }
 
-.login-box a span:nth-child(1),
-.login-box button span:nth-child(1) {
+.register-box a span:nth-child(1),
+.register-box button span:nth-child(1) {
     top: 0;
     left: -100%;
     width: 100%;
@@ -150,8 +154,8 @@ body {
     }
 }
 
-.login-box a span:nth-child(2),
-.login-box button span:nth-child(2) {
+.register-box a span:nth-child(2),
+.register-box button span:nth-child(2) {
     top: -100%;
     right: 0%;
     width: 2px;
@@ -172,8 +176,8 @@ body {
     }
 }
 
-.login-box a span:nth-child(3),
-.login-box button span:nth-child(3) {
+.register-box a span:nth-child(3),
+.register-box button span:nth-child(3) {
     bottom: 0;
     right: -100%;
     width: 100%;
@@ -194,8 +198,8 @@ body {
     }
 }
 
-.login-box a span:nth-child(4),
-.login-box button span:nth-child(4) {
+.register-box a span:nth-child(4),
+.register-box button span:nth-child(4) {
     bottom: -100%;
     left: 0;
     width: 2px;
@@ -204,6 +208,7 @@ body {
     animation: btn-anim4 1s linear infinite;
     animation-delay: 0.5s;
 }
+
 
 @keyframes btn-anim4 {
     0% {
@@ -216,32 +221,14 @@ body {
     }
 }
 
+/* Ajuste para vista móvil */
 @media (max-width: 768px) {
-    .login-box {
-        max-width: 90%; /* Ajustar ancho para pantallas pequeñas */
-        padding: 15px; /* Reducir padding en dispositivos pequeños */
-        margin: 0 auto;
+    .register-box h2 {
+        font-size: 26px; /* Igual al tamaño del título en el login */
     }
+}
 
-    .login-box h2 {
-        font-size: 6vw; /* Título más pequeño para móviles, ajustado */
-        margin-bottom: 20px;
-    }
-
-    .login-box .user-box input {
-        padding: 12px 20px; /* Más espacio en los inputs */
-        font-size: 16px;
-        margin-bottom: 15px;
-    }
-
-    .login-box button {
-        padding: 15px 30px;
-        font-size: 18px;
-        margin-top: 20px;
-        width: 100%; /* Botón más grande en móviles */
-    }
-
-    .container {
-        padding-top: 10%; /* Más espacio superior para separar del header */
-    }
+/* Para asegurar consistencia con el login */
+.login-box h2 {
+    font-size: 26px; /* Asegurar que ambos formularios tengan el mismo tamaño */
 }

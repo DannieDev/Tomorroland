@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="/assets/css/header.css">
+<header>
+  <link rel="stylesheet" href="/css/header.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <script src="/assets/js/main.js"></script>
-  <title>Header</title>
-</head>
+  <script src="/js/main.js"></script>
 
-<body>
   <!-- Encabezado con menú de navegación -->
   <nav class="navbar fixed-top maine-menu">
     <div class="header">
@@ -20,16 +11,16 @@
       </button>
       <ul class="navbar-nav mx-auto">
         <li class="nav-item">
-          <a href="/index.html" class="logo-container">
-            <img src="/assets/img/logo.jpg" alt="Logo Tomorrowland" class="logo">
+          <a href="/" class="logo-container">
+            <img src="/img/logo.jpg" alt="Logo Tomorrowland" class="logo">
           </a>
         </li>
-        <li class="nav-item"><a class="nav-link" href="/index.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
         <li class="nav-item">
           <a class="nav-link" href="#">Festival y Eventos</a>
           <div class="dropdown">
             <ul>
-              <li><a href="/src/pages/belgica.html">Tomorrowland Bélgica</a></li>
+              <li><a href="/belgica">Tomorrowland Bélgica</a></li>
               <li><a href="#">Invierno de Tomorrowland</a></li>
               <li><a href="#">Tomorrowland Brasil</a></li>
               <li><a href="#">Tomorrowland Presenta</a></li>
@@ -40,20 +31,20 @@
           <a class="nav-link" href="#">Música</a>
           <div class="dropdown">
             <ul>
-              <li><a href="/src/pages/radio.html">One Word Radio</a></li>
+              <li><a href="/radio">One World Radio</a></li>
               <li><a href="#">Tomorrowland Music</a></li>
               <li><a href="#">Tomorrowland Academy</a></li>
-              <li><a href="#">One World Artits</a></li>
+              <li><a href="#">One World Artists</a></li>
             </ul>
           </div>
         </li>
-        <li class="nav-item"><a class="nav-link" href="/src/pages/experience.html">Experiencias</a></li>
+        <li class="nav-item"><a class="nav-link" href="/experience">Experiencias</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Tienda</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Más</a></li>
-        <li class="nav-item"><a class="nav-link" href="/src/pages/contact.html">Contacto</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contact">Contacto</a></li>
         <!-- 💡 Contenedor de la derecha con botón de sesión y buscador -->
         <div class="navbar-right">
-          <a href="/src/pages/login.html" class="account-btn">
+          <a href="/auth/login" class="account-btn">
             <i class="fa fa-sign-in-alt"></i> Iniciar Sesión
           </a>
           <div class="search-container">
@@ -62,25 +53,21 @@
           </div>
         </div>
       </ul>
-
     </div>
   </nav>
+</header>
 
-  <!-- Limpiar el search -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const searchInput = document.querySelector(".search-input");
+<!-- Limpiar el search -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.querySelector(".search-input");
 
-      searchInput.addEventListener("blur", function () {
-        setTimeout(() => {
-          if (!this.matches(":focus")) {
-            this.value = "";
-          }
-        }, 100);
-      });
+    searchInput.addEventListener("blur", function () {
+      setTimeout(() => {
+        if (!this.matches(":focus")) {
+          this.value = "";
+        }
+      }, 100);
     });
-  </script>
-
-</body>
-
-</html>
+  });
+</script>

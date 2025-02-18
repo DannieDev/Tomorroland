@@ -10,7 +10,7 @@ body {
 .hero {
     text-align: center;
     padding: 150px 20px;
-    background: url('/assets/img/index-portada.webp') no-repeat center center;
+    background: url('/img/index-portada.webp') no-repeat center center;
     background-size: cover;
     color: #fff;
 }

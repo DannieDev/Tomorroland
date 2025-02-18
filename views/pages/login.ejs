@@ -1,0 +1,40 @@
+<%- include('../partials/header') %>
+
+<head>
+    <!-- Estilos de la página de Login -->
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/migas_de_pan.css">
+    <script src="/js/main.js"></script>
+    <title>Login</title>
+</head>
+
+<div class="container">
+    <!-- Contenedor para las migas de pan -->
+    <div class="breadcrumb-wrapper">
+        <div id="breadcrumb-placeholder"></div>
+    </div>
+
+    <div class="login-box">
+        <form action="/login" method="POST">
+            <h2>Inicia sesión</h2>
+            <div class="user-box">
+                <input type="email" name="email" required>
+                <label>Correo</label>
+            </div>
+            <div class="user-box">
+                <input type="password" name="password" required>
+                <label>Contraseña</label>
+            </div>
+            <button type="submit">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Ingresar
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- Incluir el footer -->
+<%- include('../partials/footer') %>
