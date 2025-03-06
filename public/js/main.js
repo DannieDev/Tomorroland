@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Obtener la página actual
     let path = window.location.pathname.split("/").pop() || "index"; // Si está vacío, asumir "index"
-    console.log("Página actual:", path);
+
 
     let breadcrumbHTML = `<nav class="breadcrumb"><ul>`;
 
@@ -129,5 +129,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
     breadcrumbHTML += `</ul></nav>`;
     breadcrumbContainer.innerHTML = breadcrumbHTML;
-    console.log("✅ Migas de pan generadas correctamente.");
 });

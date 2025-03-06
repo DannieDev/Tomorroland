@@ -14,7 +14,6 @@ app.use(session({
 
 // Importar Middlewares
 const sessionMiddleware = require("./middlewares/sessionMiddleware");
-const logMiddleware = require("./middlewares/logMiddleware");
 const authMiddleware = require("./middlewares/authMiddleware");
 
 // Aplicar Middlewares Globales
