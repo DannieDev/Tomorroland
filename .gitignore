@@ -20,3 +20,7 @@ Thumbs.db
 # Ignorar archivos de configuración del editor de código (VS Code)
 .vscode/
 .idea/
+
+
+# Ignorar Carpetas
+/scripts/

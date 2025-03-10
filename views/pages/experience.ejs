@@ -14,41 +14,45 @@
         <div id="breadcrumb-placeholder"></div>
     </div>
 
-    <section class="hero">
-        <h1>Descubre el horario completo de invierno <br> de Tomorrowland</h1>
-        <p>Empieza a planificar tu experiencia perfecta en un festival en Alpe d'Huez, Francia.</p>
-        <button class="cta-button">HORARIO</button>
+    <section class="hero" style="background-image: url('<%= heroSection.imagen %>');">
+        <h1><%= heroSection.titulo %></h1>
+        <p><%= heroSection.descripcion %></p>
+        <div class="button-container"> 
+            <button class="cta-button"><%= heroSection.boton_texto %></button>
+        </div>
     </section>
 
-    <section class="events">
-        <h2>Próximos Festivales y Eventos</h2>
-        <div class="event-cards">
+<section class="events">
+    <h2>Próximos Festivales y Eventos</h2>
+    <div class="event-cards">
+        <% eventos.forEach(evento => { %>
             <div class="event-card">
-                <img src="/event-image1.jpg" alt="Evento 1">
-                <h3>Terra Solis: Mente Contra</h3>
-                <p><i class="fa fa-calendar"></i> 26 de abril de 2025</p>
-                <p><i class="fa fa-map-marker-alt"></i> Terra Solis, Dubái</p>
+                <img src="<%= evento.imagen %>" alt="<%= evento.titulo %>">
+                <h3><%= evento.titulo %></h3>
+                <p><i class="fa fa-calendar"></i> <%= evento.fecha %></p>
+                <p><i class="fa fa-map-marker-alt"></i> <%= evento.ubicacion %></p>
                 <div class="event-buttons">
-                    <button class="info-button">Información</button>
-                    <button class="register-button">Regístrese en Preventa</button>
+                    <button class="info-button"><%= evento.boton_info %></button>
+                    <button class="register-button"><%= evento.boton_registro %></button>
                 </div>
             </div>
-            <!-- Repite más tarjetas aquí -->
-        </div>
-    </section>
+        <% }) %>
+    </div>
+</section>
 
-    <section class="news">
-        <h2>Últimas noticias</h2>
-        <div class="news-cards">
+<section class="news">
+    <h2>Últimas noticias</h2>
+    <div class="news-cards">
+        <% noticias.forEach(noticia => { %>
             <div class="news-card">
-                <img src="news-image1.jpg" alt="Noticia 1">
-                <h3>CORE Medellín regresa este viernes y sábado</h3>
-                <p>El primer escenario magnífico de CORE debutará en el Parque Norte de Medellín.</p>
+                <img src="<%= noticia.imagen %>" alt="<%= noticia.titulo %>">
+                <h3><%= noticia.titulo %></h3>
+                <p><%= noticia.descripcion %></p>
             </div>
-            <!-- Repite más tarjetas aquí -->
-        </div>
-    </section>
-</div>
+        <% }); %>
+    </div>
+</section>
+
 
 <!-- Incluir el footer -->
 <%- include('../partials/footer') %>

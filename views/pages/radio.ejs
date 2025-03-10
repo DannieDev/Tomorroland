@@ -17,28 +17,28 @@
 
     <div class="hero">
         <div class="hero-card">
-            <img src="/img/radio-banner.webp" alt="Tomorrowland Radio">
-            <div class="hero-content">
-                <span class="live">LIVE</span>
-                <h1>Tomorrowland Friendship Mix con Eats Everything</h1>
-                <button class="btn_principal">ESCUCHAR ▶</button>
-            </div>
+            <% if (heroCard) { %>
+                <img src="<%= heroCard.imagen %>" alt="Tomorrowland Radio">
+                <div class="hero-content">
+                    <span class="live">LIVE</span>
+                    <h1><%= heroCard.titulo %></h1>
+                    <a href="<%= heroCard.url %>" class="btn_principal">ESCUCHAR ▶</a>
+                </div>
+            <% } else { %>
+                <p>No hay contenido disponible.</p>
+            <% } %>
         </div>
+    
         <div class="mini-cards">
-            <div class="mini-card">
-                <img src="/img/radio1.avif" alt="Himnos de Tomorrowland">
-                <div class="mini-content">
-                    <h2>Himnos de Tomorrowland</h2>
-                    <button class="btn">ESCUCHAR</button>
+            <% miniCards.forEach(mini => { %>
+                <div class="mini-card">
+                    <img src="<%= mini.imagen %>" alt="<%= mini.titulo %>">
+                    <div class="mini-content">
+                        <h2><%= mini.titulo %></h2>
+                        <a href="<%= mini.url %>" class="btn">ESCUCHAR</a>
+                    </div>
                 </div>
-            </div>
-            <div class="mini-card">
-                <img src="/img/radio2.avif" alt="Sesiones de Amanecer">
-                <div class="mini-content">
-                    <h2>Sesiones de amanecer</h2>
-                    <button class="btn">ESCUCHAR</button>
-                </div>
-            </div>
+            <% }); %>
         </div>
     </div>
 
@@ -46,83 +46,33 @@
         <h2>Los últimos espectáculos a la carta</h2>
         <p>Revive programas exclusivos de One World Radio.</p>
         <div class="show-cards">
-            <div class="show-card">
-                <img src="/img/radio-line.jpg" alt="Espectáculo 1">
-                <button class="play-btn">▶</button>
-                <h3>4:4 con Carly Wilford</h3>
-                <p>Espectáculo 4 - 29 de enero</p>
-            </div>
-            <div class="show-card">
-                <img src="/img/radio-line1.jpg" alt="Espectáculo 2">
-                <button class="play-btn">▶</button>
-                <h3>20 años, 20 preguntas: Lucas y Steve</h3>
-                <p>30 de enero</p>
-            </div>
-            <div class="show-card">
-                <img src="/img/radio-line2.jpg" alt="Espectáculo 3">
-                <button class="play-btn">▶</button>
-                <h3>20 años, 20 preguntas: Henri PFR</h3>
-                <p>30 de enero</p>
-            </div>
-            <div class="show-card">
-                <img src="/img/radio-line.jpg" alt="Espectáculo 1">
-                <button class="play-btn">▶</button>
-                <h3>4:4 con Carly Wilford</h3>
-                <p>Espectáculo 4 - 29 de enero</p>
-            </div>
-            <div class="show-card">
-                <img src="/img/radio-line1.jpg" alt="Espectáculo 2">
-                <button class="play-btn">▶</button>
-                <h3>20 años, 20 preguntas: Lucas y Steve</h3>
-                <p>30 de enero</p>
-            </div>
-            <div class="show-card">
-                <img src="/img/radio-line2.jpg" alt="Espectáculo 3">
-                <button class="play-btn">▶</button>
-                <h3>20 años, 20 preguntas: Henri PFR</h3>
-                <p>30 de enero</p>
-            </div>
+            <% shows.forEach(show => { %>
+                <div class="show-card">
+                    <img src="<%= show.imagen %>" alt="<%= show.titulo %>">
+                    <button class="play-btn">▶</button>
+                    <h3><%= show.titulo %></h3>
+                    <p><%= show.descripcion %></p>
+                </div>
+            <% }); %>
         </div>
         <div class="nav-arrows-show-card">
             <button class="prev">‹</button>
             <button class="next">›</button>
         </div>
     </section>
+    
 
     <section class="monthly-shows">
         <h2>Espectáculos mensuales</h2>
         <div class="show-wrapper">
             <div class="show-cards-monthly">
-                <div class="monthly-card">
-                    <img src="/img/espectaculo.webp" alt="¡Los lunes se han vuelto mucho más ruidosos!">
-                    <h3>MANDY Lunes</h3>
-                    <p>¡Los lunes se han vuelto mucho más ruidosos! El ícono del hard dance MANDY marca el ritmo de la semana que se avecina.</p>
-                </div>
-                <div class="monthly-card">
-                    <img src="/img/espectaculo1.webp" alt="Hardwell presenta Euphoria">
-                    <h3>Hardwell presenta Euphoria</h3>
-                    <p>El programa mensual de Hardwell con nuevos lanzamientos.</p>
-                </div>
-                <div class="monthly-card">
-                    <img src="/img/espectaculo2.webp" alt="Sorry For The Noise con Amber Bross">
-                    <h3>Sorry For The Noise con Amber Bross</h3>
-                    <p>Un espectáculo de una hora con la mejor música techno, house y de influencia retro belga.</p>
-                </div>
-                <div class="monthly-card">
-                    <img src="/img/espectaculo.webp" alt="¡Los lunes se han vuelto mucho más ruidosos!">
-                    <h3>MANDY Lunes</h3>
-                    <p>¡Los lunes se han vuelto mucho más ruidosos! El ícono del hard dance MANDY marca el ritmo de la semana que se avecina.</p>
-                </div>
-                <div class="monthly-card">
-                    <img src="/img/espectaculo1.webp" alt="Hardwell presenta Euphoria">
-                    <h3>Hardwell presenta Euphoria</h3>
-                    <p>El programa mensual de Hardwell con nuevos lanzamientos.</p>
-                </div>
-                <div class="monthly-card">
-                    <img src="/img/espectaculo2.webp" alt="Sorry For The Noise con Amber Bross">
-                    <h3>Sorry For The Noise con Amber Bross</h3>
-                    <p>Un espectáculo de una hora con la mejor música techno, house y de influencia retro belga.</p>
-                </div>
+                <% monthlyShows.forEach(show => { %>
+                    <div class="monthly-card">
+                        <img src="<%= show.imagen %>" alt="<%= show.titulo %>">
+                        <h3><%= show.titulo %></h3>
+                        <p><%= show.descripcion %></p>
+                    </div>
+                <% }); %>
             </div>
         </div>
         <div class="nav-arrows-monthly">
@@ -130,6 +80,8 @@
             <button class="next-monthly">›</button>
         </div>
     </section>
+    
+
     <!-- Incluir el footer -->
 <%- include('../partials/footer') %>
 </div>

@@ -8,18 +8,23 @@ body {
 }
 
 .hero {
+    position: relative;
     text-align: center;
     padding: 150px 20px;
     background: url('/img/index-portada.webp') no-repeat center center;
     background-size: cover;
+    background-position: center;
     color: #fff;
 }
 
 .hero h1 {
-    font-size: 48px;
+    font-size: 3.5rem; /* Ajusta el tamaño para que coincida */
     font-weight: bold;
-    line-height: 1.2;
-    margin-bottom: 10px;
+    color: white; /* Asegura que el color sea blanco */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8); /* Agrega sombra para resaltar */
+    max-width: 800px; /* Ajusta el ancho máximo del texto */
+    margin: 0 auto; /* Centra el título */
+    line-height: 1.2; /* Ajusta el espacio entre líneas */
 }
 
 .hero p {
@@ -27,29 +32,85 @@ body {
     margin-bottom: 20px;
 }
 
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
 .cta-button {
-    padding: 15px 30px;
-    font-size: 18px;
-    background: linear-gradient(90deg, #ff7e5f, #feb47b);
-    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #ff815e;
+    color: white;
     border: none;
-    border-radius: 30px;
+    border-radius: 25px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background 0.3s ease-in-out;
+    width: auto;  /* Ajusta el tamaño automático al contenido */
+    min-width: 150px; /* Evita que sea demasiado pequeño */
+    height: 45px; /* Ajusta la altura */
 }
 
 .cta-button:hover {
     background: linear-gradient(90deg, #feb47b, #ff7e5f);
 }
 
+
 .events,
 .news {
     padding: 50px 20px;
 }
 
+.news-card h3 {
+    font-size: 1.2rem; /* Ajusta el tamaño del título */
+    font-weight: bold;
+    margin-bottom: 8px; /* Espacio debajo del título */
+    line-height: 1.4; /* Ajusta la separación entre líneas */
+}
+
+.news-card p {
+    font-size: 1rem; /* Ajusta el tamaño del texto */
+    line-height: 1.6; /* Aumenta el interlineado para mejorar la lectura */
+    color: #ccc; /* Ajusta el color para mayor contraste */
+    margin-bottom: 10px; /* Espacio debajo del texto */
+}
+
+.news-cards {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px; /* Evita que se corte el contenido */
+}
+
+.news-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
 h2 {
     font-size: 32px;
     margin-bottom: 20px;
+}
+.event-card h3,
+.event-card p {
+    line-height: 1.6; /* Ajusta el valor según lo necesites */
 }
 
 .event-cards,

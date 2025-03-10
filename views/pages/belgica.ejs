@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="/css/belgica.css">
         <link rel="stylesheet" href="/css/migas_de_pan.css">
         <script src="/js/main.js"></script>
+        <title>Bélgica</title>
     </head>
 
     <div class="container">
@@ -14,81 +15,78 @@
         </div>
         <div class="event-container">
             <a>TOMORROWLAND, BÉLGICA</a>
-            <a href="#" class="event-button">Bienvenido</a>
-            <a href="#" class="event-button">Pases y Paquetes</a>
-            <a href="#" class="event-button">Información de ventas</a>
-            <a href="#" class="event-button">Práctico</a>
-            <a href="#" class="event-button">Preguntas más frecuentes</a>
+            <% navItems.forEach(item=> { %>
+                <a href="<%= item.url %>" class="event-button">
+                    <%= item.titulo %>
+                </a>
+                <% }); %>
         </div>
 
         <div class="hero">
             <div class="hero-content">
-                <h1>BIENVENIDO</h1>
+                <h1>
+                    <%= tituloPrincipal ? tituloPrincipal.titulo : "BIENVENIDO" %>
+                </h1>
                 <div class="dates">
-                    <span>DEL 18 AL 20 DE JULIO DE 2025 <br> <small>FIN DE SEMANA 1</small></span>
-                    <span>DEL 25 AL 27 DE JULIO DE 2025 <br> <small>FIN DE SEMANA 2</small></span>
+                    <% fechas.forEach(fecha=> { %>
+                        <span>
+                            <%= fecha.descripcion %> <br> <small>
+                                    <%= fecha.titulo %>
+                                </small>
+                        </span>
+                        <% }); %>
                 </div>
             </div>
         </div>
 
         <section class="tickets">
-            <div class="ticket-item">
-                <div class="content">
-                    <h2>VENTA DE ENTRADAS EN TODO EL MUNDO</h2>
-                    <p class="date">1 DE FEBRERO DE 2025 - 17:00 CET</p>
-                    <p class="description">Pases para festivales y alojamiento en DreamVille</p>
-                </div>
-                <div class="cta">
-                    <button class="btn">PRE-INSCRIPCIÓN</button>
-                </div>
-            </div>
-
-            <div class="ticket-item">
-                <div class="content">
-                    <h2>PREVENTA MUNDIAL</h2>
-                    <p>Pases para festivales y alojamiento en DreamVille</p>
-                    <span class="sold">AGOTADO</span>
-                </div>
-            </div>
-
-            <div class="ticket-item">
-                <div class="content">
-                    <h2>PAQUETES DE VIAJE DE GLOBAL JOURNEY</h2>
-                    <p>Pases y transporte oficial</p>
-                    <span class="sold">AGOTADO</span>
-                </div>
-            </div>
+            <% if (boletos.length> 0) { %>
+                <% boletos.forEach(boleto=> { %>
+                    <div class="ticket-item">
+                        <div class="content">
+                            <h2>
+                                <%= boleto.titulo %>
+                            </h2>
+                            <% if (boleto.fecha_evento) { %>
+                                <p class="date">
+                                    <%= new Date(boleto.fecha_evento).toLocaleDateString('es-ES', { day: '2-digit' ,
+                                        month: 'long' , year: 'numeric' }) %>
+                                </p>
+                                <% } %>
+                                    <p class="description">
+                                        <%= boleto.descripcion %>
+                                    </p>
+                        </div>
+                        <div class="cta">
+                            <% if (boleto.estado && boleto.estado.toLowerCase().trim()==="disponible" ) { %>
+                                <button class="btn">PRE-INSCRIPCIÓN</button>
+                                <% } else { %>
+                                    <span class="sold">AGOTADO</span>
+                                    <% } %>
+                        </div>
+                    </div>
+                    <% }); %>
+                        <% } else { %>
+                            <p>No hay boletos disponibles en este momento.</p>
+                            <% } %>
         </section>
 
-        <section class="discover">
-            <h2>Descubrir</h2>
-            <div class="discover-grid">
-                <div class="discover-card">
-                    <img src="/img/Festival.jpg" alt="Pases y Paquetes">
-                    <div class="overlay">
-                        <h2>Pases y Paquetes</h2>
-                        <p>Descubre todos los tipos de entradas disponibles para Tomorrowland Belgium 2025.</p>
-                        <button class="btn">MÁS INFORMACIÓN</button>
-                    </div>
-                </div>
-                <div class="discover-card">
-                    <img src="/img/Festival1.jpg" alt="Esto es Tomorrowland">
-                    <div class="overlay">
-                        <h2>Esto es Tomorrowland</h2>
-                        <p>Más información sobre Tomorrowland Bélgica, DreamVille, Global Journey y el mundo de
-                            Tomorrowland.</p>
-                        <button class="btn">MÁS INFORMACIÓN</button>
-                    </div>
-                </div>
-                <div class="discover-card">
-                    <img src="/img/Festival2.jpg" alt="Información de ventas">
-                    <div class="overlay">
-                        <h2>Información de ventas</h2>
-                        <p>Descubre cuándo y cómo puedes comprar pases y paquetes para Tomorrowland Bélgica 2025.</p>
-                        <button class="btn">MÁS INFORMACIÓN</button>
-                    </div>
+<!-- Sección "Discover" dinámica -->
+<section class="discover">
+    <h2>Descubrir</h2>
+    <div class="discover-grid">
+        <% descubrir.forEach(item => { %>
+            <div class="discover-card">
+                <img src="<%= item.imagen %>" alt="<%= item.titulo %>">
+                <div class="overlay">
+                    <h2><%= item.titulo %></h2>
+                    <p><%= item.descripcion %></p>
+                    <a href="<%= item.url %>" class="btn">MÁS INFORMACIÓN</a>
                 </div>
             </div>
-        </section>
+        <% }); %>
+    </div>
+</section>
+
         <%- include('../partials/footer') %>
     </div>

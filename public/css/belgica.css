@@ -240,18 +240,22 @@ header {
 .discover {
     margin-top: 80px;
     padding: 40px 0;
+    text-align: center;
 }
 
 .discover h2 {
     font-size: 2rem;
     margin-bottom: 40px;
     color: #fff;
+    font-weight: bold;
 }
 
 .discover-grid {
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin: 0 auto;
 }
 
 .discover-card {
@@ -260,6 +264,7 @@ header {
     overflow: hidden;
     border-radius: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
     max-width: 450px;
     filter: brightness(0.9) contrast(1.2);
 }
@@ -278,8 +283,14 @@ header {
 
 .discover-card .overlay {
     padding: 15px 20px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 15px;
     background: rgba(0, 0, 0, 0.5);
     border-radius: 0 0 15px 15px;
+    color: white;
+    text-align: center;
 }
 
 .overlay {
@@ -289,17 +300,30 @@ header {
     backdrop-filter: blur(1.5px);
 }
 
+.overlay h2 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
 .overlay p {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     line-height: 1.2;
-    text-align: center;
 }
 
 .overlay .btn {
+    display: inline-block;
+    margin-top: 10px;
     background-color: #830034;
-    padding: 12px 24px;
+    padding: 10px 15px;
     border: none;
-    border-radius: 30px;
+    border-radius: 20px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease;
 }
 
 .overlay .btn:hover {
@@ -368,19 +392,23 @@ header {
     }
 
     .discover-grid {
+        /*flex-direction: column;
+        gap: 20px;*/
         flex-direction: column;
         gap: 20px;
+        align-items: center;
     }
 
     .discover-card {
         max-width: 100%;
-        height: auto;
+        /*height: auto;*/
     }
 
     .discover-card img {
-        height: auto;
+        /*height: auto;
         max-height: 200px;
-        object-fit: cover;
+        object-fit: cover;*/
+        height: 200px;
     }
 
     .overlay {
