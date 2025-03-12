@@ -24,3 +24,7 @@ Thumbs.db
 
 # Ignorar Carpetas
 /scripts/
+
+# Ignorar archivos de configuración de la base de datos
+config/*
+!config/db-Modify.js

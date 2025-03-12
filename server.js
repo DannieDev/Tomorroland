@@ -14,6 +14,9 @@ app.use(session({
     cookie: { secure: false }
 }));
 
+//Middleware Global
+app.use(globalMiddleware);
+
 // Importar Middlewares
 const sessionMiddleware = require("./middlewares/sessionMiddleware");
 const authMiddleware = require("./middlewares/authMiddleware");
