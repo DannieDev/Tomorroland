@@ -128,8 +128,7 @@ body {
     90%,
     92.1%,
     100% {
-        color: 00aeef;
-        ;
+        color: #202020;
         text-shadow: 0 0 2px #00aeef, 0 0 5px #00aeef, 0 0 10px #00aeef,
             0 0 20px #00aeef, 0 0 40px #00aeef;
     }
