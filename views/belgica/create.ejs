@@ -1,0 +1,161 @@
+<%- include('../partials/header') %>
+
+  <link rel="stylesheet" href="/css/Belgica/create.css">
+
+  <div class="container mt-5">
+    <div class="form-box">
+      <h1>Agregar Nuevo Contenido - Bélgica</h1>
+
+      <form action="/admin/belgica" method="POST" enctype="multipart/form-data">
+        <!-- Tipo -->
+        <div class="form-group">
+          <label for="tipo">Tipo</label>
+          <select name="tipo" id="tipo" class="form-control" required>
+            <option value="">Selecciona una opción</option>
+            <option value="nav">Links Principales</option>
+            <option value="hero_fechas">Bienvenida Fechas</option>
+            <option value="boletos">Boletos</option>
+            <option value="descubrir">Descubrir</option>
+          </select>
+        </div>
+
+        <!-- Título -->
+        <div class="form-group tipo-boletos tipo-descubrir tipo-nav tipo-hero_fechas" id="grupo-titulo">
+          <label for="titulo">Título</label>
+          <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Escribe el título aquí..."
+            required>
+        </div>
+
+        <!-- Descripción -->
+        <div class="form-group tipo-boletos tipo-descubrir" id="grupo-descripcion">
+          <label for="descripcion">Descripción</label>
+          <textarea name="descripcion" id="descripcion" class="form-control"
+            placeholder="Escribe la descripción aquí..."></textarea>
+        </div>
+
+        <!-- Imagen -->
+        <div class="form-group tipo-descubrir" id="grupo-imagen">
+          <label for="imagen">Imagen</label>
+          <input type="file" name="imagen" id="imagen" class="form-control" accept="image/*">
+
+          <!-- Vista previa -->
+          <div id="preview-container" style="margin-top: 10px;">
+            <img id="preview-img" src="#" alt="Vista previa"
+              style="display: none; max-height: 180px; border-radius: 8px;">
+          </div>
+        </div>
+
+        <!-- Fecha del Evento -->
+        <div class="form-group tipo-boletos tipo-hero_fechas" id="grupo-fecha">
+          <label for="fecha_evento">Fecha del Evento</label>
+          <input type="datetime-local" name="fecha_evento" id="fecha_evento" class="form-control">
+        </div>
+
+        <!-- Estado -->
+        <div class="form-group tipo-boletos" id="grupo-estado">
+          <label for="estado">Estado</label>
+          <select name="estado" id="estado" class="form-control">
+            <option value="disponible">Disponible</option>
+            <option value="agotado">Agotado</option>
+          </select>
+        </div>
+
+        <!-- URL -->
+        <div class="form-group tipo-descubrir tipo-nav" id="grupo-url">
+          <label for="url">URL</label>
+          <input type="text" name="url" id="url" class="form-control" placeholder="# o enlace externo">
+        </div>
+
+        <!-- Botones -->
+        <div class="button-row hidden" id="grupo-botones">
+          <button type="submit" class="btn btn-success">Guardar</button>
+          <a href="/admin/belgica" class="btn btn-danger">Cancelar</a>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- CKEditor -->
+  <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+  <script>
+    const editors = {};
+
+    const createEditor = (id, placeholder) => {
+      const el = document.querySelector(id);
+      if (!el || editors[id]) return;
+      ClassicEditor
+        .create(el, { placeholder })
+        .then(editor => {
+          editor.editing.view.change(writer => {
+            writer.setStyle('color', '#ffffff', editor.editing.view.document.getRoot());
+            writer.setStyle('background-color', '#1c1c1c', editor.editing.view.document.getRoot());
+          });
+          editors[id] = editor;
+        });
+    };
+
+    const destroyEditor = (id) => {
+      if (editors[id]) {
+        editors[id].destroy().then(() => delete editors[id]);
+      }
+    };
+
+    const tipoSelect = document.getElementById('tipo');
+    const mostrarCamposPorTipo = (tipo) => {
+      document.querySelectorAll('.form-group').forEach(div => {
+        const esTipo = div.className.includes('tipo-');
+        const visible = div.classList.contains('tipo-' + tipo);
+        const esBoton = div.id === 'grupo-botones';
+        const esTitulo = div.id === 'grupo-titulo';
+        if (esBoton || esTitulo) {
+          div.style.display = tipo ? 'block' : 'none';
+        } else if (esTipo) {
+          div.style.display = visible ? 'block' : 'none';
+        }
+      });
+
+      // Solo descripción tiene CKEditor
+      if (["boletos", "descubrir"].includes(tipo)) {
+        createEditor('#descripcion', 'Escribe la descripción aquí...');
+      } else {
+        destroyEditor('#descripcion');
+      }
+    };
+
+    tipoSelect.addEventListener('change', () => mostrarCamposPorTipo(tipoSelect.value));
+    window.addEventListener('DOMContentLoaded', () => mostrarCamposPorTipo(''));
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const tipoSelect = document.getElementById("tipo");
+      const botonera = document.getElementById("grupo-botones");
+
+      tipoSelect.addEventListener("change", function () {
+        if (this.value !== "") {
+          botonera.classList.remove("hidden");
+        } else {
+          botonera.classList.add("hidden");
+        }
+      });
+    });
+
+    const imagenInput = document.getElementById('imagen');
+    const previewImg = document.getElementById('preview-img');
+
+    imagenInput.addEventListener('change', function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          previewImg.src = e.target.result;
+          previewImg.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      } else {
+        previewImg.src = '#';
+        previewImg.style.display = 'none';
+      }
+    });
+  </script>
+
+  <%- include('../partials/footer') %>

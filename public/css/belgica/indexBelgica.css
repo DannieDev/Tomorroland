@@ -1,0 +1,179 @@
+/* Contenedor general */
+.container {
+    padding: 20px;
+    color: #fff;
+    margin-top: 100px;
+}
+
+/* Título principal */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* Tabla general */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #1e1e1e;
+}
+
+/* Celdas */
+.table th,
+.table td {
+    border: 1px solid #444;
+    padding: 12px 15px;
+    text-align: left;
+    color: #fff;
+    vertical-align: middle;
+}
+
+/* Encabezados */
+.table th {
+    background-color: #111;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Columnas específicas más anchas */
+
+.table th:nth-child(2),
+/* TÍTULO */
+.table td:nth-child(2) {
+    width: 180px;
+    word-wrap: break-word;
+}
+
+.table td:nth-child(3) {
+    /* DESCRIPCIÓN */
+    min-width: 100px;
+}
+
+.table td:nth-child(5) {
+    /* TIPO */
+    white-space: nowrap;
+}
+
+.table th:nth-child(6),
+/* URL */
+.table td:nth-child(6) {
+    width: 100px;
+    word-wrap: break-word;
+}
+
+.table th:nth-child(7) {
+    /* IMAGEN */
+    width: 200px;
+    text-align: center;
+}
+
+.table td:nth-child(7) img {
+    max-width: 180px;
+    max-height: 180px;
+    object-fit: cover;
+}
+
+.table th:nth-child(8) {
+    /* Acciones */
+    width: 200px;
+}
+
+/* Acción - Botones verticales */
+.table td.actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
+}
+
+/* Opción: acción con botones en línea horizontal */
+.table td.actions-horizontal {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 10px 0;
+}
+
+/* Botones */
+.table td .btn {
+    padding: 8px 14px;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+}
+
+/* Botón verde */
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+/* Botón rojo */
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Botón para agregar nuevo */
+.btn-primary {
+    background-color: #28a745;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.alert {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    width: fit-content;
+    margin: 10px auto;
+    animation: fadeOut 0.5s ease forwards;
+    animation-delay: 3s;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.alert-success {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.5s ease;
+}
+
+.alert-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.alert-warning {
+    background-color: #ffc107;
+    color: #212529;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.5s ease;
+}
+
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}

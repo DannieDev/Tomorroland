@@ -1,4 +1,5 @@
 module.exports = {
+    //Validacion de Registro
     validarRegistro: (req, res, next) => {
         const { nombre, email, password } = req.body;
 
@@ -12,7 +13,7 @@ module.exports = {
 
         next();
     },
-
+    //Validacion de Login
     validarLogin: (req, res, next) => {
         const { email, password } = req.body;
 

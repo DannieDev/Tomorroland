@@ -26,11 +26,20 @@ const User = sequelize.define("User", {
     },
     created_at: {
         type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW,
+        defaultValue: DataTypes.NOW
     },
+    updated_at: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+        onUpdate: DataTypes.NOW // Se actualizará automáticamente en cada modificación
+    }
+
+    
 }, {
     tableName: "usuarios", // Asegurar que coincide con la base de datos
-    timestamps: false, // Evita que Sequelize agregue createdAt y updatedAt automáticamente
+    timestamps: false,
+    underscored: true,
 });
+
 
 module.exports = User;

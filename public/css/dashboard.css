@@ -1,0 +1,70 @@
+/* === Dashboard Panel General === */
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px 10px;
+    background-color: #1e1e1e;
+    border-bottom: 1px solid #333;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: #f5f5f5;
+}
+
+.dashboard-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 40px 20px;
+    gap: 20px;
+}
+
+.dashboard-card {
+    background-color: #1f1f1f;
+    border-radius: 12px;
+    padding: 30px;
+    width: 300px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    transition: transform 0.2s ease;
+    text-align: center;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+}
+
+.dashboard-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #00bcd4;
+}
+
+.dashboard-card p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+.dashboard-button {
+    background-color: #00bcd4;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.dashboard-button:hover {
+    background-color: #0097a7;
+}

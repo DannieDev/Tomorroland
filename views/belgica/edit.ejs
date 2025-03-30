@@ -1,0 +1,125 @@
+<%- include('../partials/header') %>
+
+    <link rel="stylesheet" href="/css/belgica/edit.css">
+
+    <div class="container mt-5">
+        <div class="form-box">
+            <h1>Editar Contenido - Bélgica</h1>
+
+            <form action="/admin/belgica/<%= registro.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+
+                <input type="hidden" name="_method" value="PUT">
+
+                <!-- Título -->
+                <div class="form-group tipo-boletos tipo-descubrir tipo-nav tipo-hero_fechas" data-field="titulo">
+                    <label for="titulo">Título</label>
+                    <input type="text" name="titulo" id="titulo" class="form-control" value="<%= registro.titulo %>"
+                        required>
+                </div>
+
+                <!-- Descripción -->
+                <div class="form-group tipo-boletos tipo-descubrir" data-field="descripcion">
+                    <label for="descripcion">Descripción</label>
+                    <textarea name="descripcion" id="descripcion"
+                        class="form-control"><%= registro.descripcion %></textarea>
+                </div>
+
+                <!-- Imagen -->
+                <div class="form-group" data-field="imagen">
+                    <label for="imagen">Imagen</label>
+
+                    <% if (registro.imagen) { %>
+                        <div style="margin-bottom: 10px;">
+                            <p style="margin-bottom: 5px; font-style: italic;">Imagen actual:</p>
+                            <img src="/uploads/<%= registro.imagen %>" alt="Imagen actual"
+                                style="max-height: 180px; border-radius: 8px;">
+                        </div>
+                        <% } else { %>
+                            <p style="margin-bottom: 5px; font-style: italic;">No hay imagen actual.</p>
+                            <% } %>
+
+                                <input type="file" name="imagen" id="imagen" class="form-control" accept="image/*">
+                </div>
+
+
+                <!-- Fecha del Evento -->
+                <div class="form-group tipo-boletos tipo-hero_fechas" data-field="fecha">
+                    <label for="fecha_evento">Fecha del Evento</label>
+                    <input type="datetime-local" name="fecha_evento" id="fecha_evento" class="form-control"
+                        value="<%= registro.fecha_evento ? registro.fecha_evento.toISOString().slice(0, 16) : '' %>">
+                </div>
+
+                <!-- Estado -->
+                <div class="form-group tipo-boletos" data-field="estado">
+                    <label for="estado">Estado</label>
+                    <select name="estado" id="estado" class="form-control">
+                        <option value="disponible" <%=registro.estado==='disponible' ? 'selected' : '' %>>Disponible
+                        </option>
+                        <option value="agotado" <%=registro.estado==='agotado' ? 'selected' : '' %>>Agotado</option>
+                    </select>
+                </div>
+
+                <!-- URL -->
+                <div class="form-group tipo-descubrir tipo-nav" data-field="url">
+                    <label for="url">URL</label>
+                    <input type="text" name="url" id="url" class="form-control" value="<%= registro.url || '' %>">
+                </div>
+
+                <!-- Botones -->
+                <div class="button-row">
+                    <button type="submit" class="btn btn-success">Actualizar</button>
+                    <a href="/admin/belgica" class="btn btn-danger">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- CKEditor 5 moderno -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+    <script>
+        const editors = {};
+
+        const createEditor = (id) => {
+            const el = document.querySelector(id);
+            if (!el || editors[id]) return;
+            ClassicEditor
+                .create(el)
+                .then(editor => {
+                    editor.editing.view.change(writer => {
+                        writer.setStyle('color', '#ffffff', editor.editing.view.document.getRoot());
+                        writer.setStyle('background-color', '#1c1c1c', editor.editing.view.document.getRoot());
+                    });
+                    editors[id] = editor;
+                })
+                .catch(error => console.error(error));
+        };
+
+        // Lógica para ocultar campos según tipo
+        const tipo = "<%= registro.tipo %>";
+        const camposPorTipo = {
+            nav: ['titulo', 'url'],
+            boletos: ['titulo', 'descripcion', 'fecha', 'estado'],
+            hero_fechas: ['titulo', 'descripcion', 'fecha'],
+            descubrir: ['titulo', 'descripcion', 'imagen', 'url'],
+            eventos: ['titulo', 'descripcion', 'fecha', 'imagen'],
+            titulo: ['titulo'],
+            default: ['titulo', 'descripcion']
+        };
+
+        const camposMostrados = camposPorTipo[tipo] || camposPorTipo.default;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll('[data-field]').forEach(field => {
+                const name = field.getAttribute('data-field');
+                if (!camposMostrados.includes(name)) {
+                    field.style.display = 'none';
+                }
+            });
+
+            if (camposMostrados.includes('descripcion')) {
+                createEditor('#descripcion');
+            }
+        });
+    </script>
+
+    <%- include('../partials/footer') %>

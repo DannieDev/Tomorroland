@@ -1,6 +1,11 @@
-module.exports = (req, res, next) => {
-    if (!req.session.usuario) {
-        return res.redirect("/auth/login"); // Si no está autenticado, redirigir al login
+// Solo permitir acceso si el usuario está logueado
+function ensureAuthenticated(req, res, next) {
+    if (req.session.usuario) {
+        return next();
     }
-    next();
+    res.redirect('/auth/login');
+}
+
+module.exports = {
+    ensureAuthenticated,
 };

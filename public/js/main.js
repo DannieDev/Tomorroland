@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Obtener la página actual
-    let path = window.location.pathname.split("/").pop() || "index"; // Si está vacío, asumir "index"
+    let path = window.location.pathname.split("/").pop() || "home"; // Si está vacío, asumir "index"
 
 
     let breadcrumbHTML = `<nav class="breadcrumb"><ul>`;
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Definir rutas y nombres con las nuevas rutas de EJS
     const routes = {
         "": "Inicio",
-        "index": "Inicio",
+        "home": "Inicio",
         "login": "Login",
         "register": "Registro",
         "contact": "Contacto",
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     // Si estamos en el index, solo mostrar "Inicio"
-    if (path === "index") {
+    if (path === "home") {
         breadcrumbHTML += `<li class="active">Inicio</li>`;
     } else {
         // Mostrar "Inicio" como enlace y luego la página actual

@@ -15,7 +15,7 @@
         </div>
         <div class="event-container">
             <a>TOMORROWLAND, BÉLGICA</a>
-            <% navItems.forEach(item=> { %>
+            <% navContent.forEach(item=> { %>
                 <a href="<%= item.url %>" class="event-button">
                     <%= item.titulo %>
                 </a>
@@ -54,7 +54,7 @@
                                 </p>
                                 <% } %>
                                     <p class="description">
-                                        <%= boleto.descripcion %>
+                                        <%- boleto.descripcion %>
                                     </p>
                         </div>
                         <div class="cta">
@@ -71,22 +71,25 @@
                             <% } %>
         </section>
 
-<!-- Sección "Discover" dinámica -->
-<section class="discover">
-    <h2>Descubrir</h2>
-    <div class="discover-grid">
-        <% descubrir.forEach(item => { %>
-            <div class="discover-card">
-                <img src="<%= item.imagen %>" alt="<%= item.titulo %>">
-                <div class="overlay">
-                    <h2><%= item.titulo %></h2>
-                    <p><%= item.descripcion %></p>
-                    <a href="<%= item.url %>" class="btn">MÁS INFORMACIÓN</a>
-                </div>
+        <!-- Sección "Discover" dinámica -->
+        <section class="discover">
+            <h2>Descubrir</h2>
+            <div class="discover-grid">
+                <% descubrir.forEach(item=> { %>
+                    <div class="discover-card">
+                        <img src="<%= item.rutaImagen %>" alt="<%= item.titulo %>">
+                        <div class="overlay">
+                            <h2>
+                                <%= item.titulo %>
+                            </h2>
+                            <p>
+                                <%- item.descripcion %>
+                            </p>
+                            <a href="<%= item.url %>" class="btn">MÁS INFORMACIÓN</a>
+                        </div>
+                    </div>
+                    <% }); %>
             </div>
-        <% }); %>
-    </div>
-</section>
-
+        </section>
         <%- include('../partials/footer') %>
     </div>

@@ -1,0 +1,124 @@
+<%- include('../partials/header') %>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Administrar Bélgica</title>
+        <link rel="stylesheet" href="/css/belgica/indexBelgica.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Gestión de Bélgica</h1>
+
+                    <% if (success_msg) { %>
+                        <div style="display: flex; justify-content: center; margin-top: 10px;">
+                            <div id="mensaje-exito"
+                                class="<%= success_msg.includes('actualizados') ? 'alert-warning' : 'alert-success' %>">
+                                <%= success_msg %>
+                            </div>
+                        </div>
+                        <% } %>
+
+
+                            <% if (danger_msg) { %>
+                                <div style="display: flex; justify-content: center; margin-top: 10px;">
+                                    <div id="mensaje-error"
+                                        style="background-color: #dc3545; color: white; padding: 12px 24px; border-radius: 6px; font-weight: bold; text-align: center; box-shadow: 0 0 10px rgba(0,0,0,0.2); transition: opacity 0.5s ease;">
+                                        <%= danger_msg %>
+                                    </div>
+                                </div>
+                                <% } %>
+
+
+                                    <a href="/admin/belgica/create" class="btn btn-primary">+ Agregar nuevo</a>
+
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>TÍTULO</th>
+                                                <th>DESCRIPCIÓN</th>
+                                                <th>FECHA EVENTO</th>
+                                                <th>TIPO</th>
+                                                <th>URL</th>
+                                                <th>IMAGEN</th>
+                                                <th>ACCIONES</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% registros.forEach(item=> { %>
+                                                <tr>
+                                                    <td>
+                                                        <%= item.id %>
+                                                    </td>
+                                                    <td>
+                                                        <%= item.titulo %>
+                                                    </td>
+                                                    <td>
+                                                        <%= item.descripcion %>
+                                                    </td>
+                                                    <td>
+                                                        <%= item.fecha_evento ?
+                                                            item.fecha_evento.toLocaleString('es-MX') : '—' %>
+                                                    </td>
+                                                    <td>
+                                                        <%= { boletos: "Boletos 🎟️" ,
+                                                            hero_fechas: "Fechas Principales 📅" , nav: "Navegación 🌐"
+                                                            , descubrir: "Descubrir 🔍" , titulo: "Título Principal"
+                                                            }[item.tipo] || item.tipo %>
+                                                    </td>
+                                                    <td>
+                                                        <% if (item.url) { %>
+                                                            <a href="<%= item.url %>" target="_blank"
+                                                                style="color:#4da6ff; font-size: 0.85rem;">
+                                                                <%= item.url.length> 20 ? item.url.substring(0, 20) +
+                                                                    "..." :
+                                                                    item.url
+                                                                    %>
+                                                            </a>
+                                                            <% } else { %>
+                                                                —
+                                                                <% } %>
+                                                    </td>
+                                                    <td>
+                                                        <% if (item.rutaImagen) { %>
+                                                            <img src="<%= item.rutaImagen %>" alt="Imagen" width="80">
+                                                            <% } else { %>
+                                                                Sin imagen
+                                                                <% } %>
+                                                    </td>
+                                                    <td class="actions">
+                                                        <a href="/admin/belgica/edit/<%= item.id %>"
+                                                            class="btn btn-success">Editar</a>
+                                                        <form action="/admin/belgica/delete/<%= item.id %>"
+                                                            method="POST">
+                                                            <button type="submit" class="btn btn-danger"
+                                                                onclick="return confirm('¿Eliminar este registro?')">Eliminar</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                                <% }) %>
+                                        </tbody>
+                                    </table>
+        </div>
+        <script>
+            setTimeout(() => {
+                const mensaje = document.getElementById('mensaje-exito');
+                if (mensaje) {
+                    mensaje.style.opacity = '0';
+                    setTimeout(() => mensaje.remove(), 500); // lo elimina del DOM después de desvanecer
+                }
+            }, 3000); // 3 segundos
+
+            setTimeout(() => {
+                const mensajeError = document.getElementById('mensaje-error');
+                if (mensajeError) {
+                    mensajeError.style.opacity = '0';
+                    setTimeout(() => mensajeError.remove(), 500);
+                }
+            }, 3000);
+        </script>
+
+    </body>
+
+    <%- include('../partials/footer') %>

@@ -1,14 +1,15 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const User = require("../models/User"); // Usamos Sequelize
+const { redirectIfAuthenticated } = require('../middlewares/sessionMiddleware');
 const router = express.Router();
 
-// 🔹 Ruta para mostrar el formulario de registro
-router.get("/register", (req, res) => {
+// Ruta para mostrar el formulario de registro
+router.get("/register", redirectIfAuthenticated, (req, res) => {
     res.render("pages/register");
 });
 
-// 🔹 Ruta para registrar usuarios en la base de datos con Sequelize
+// Ruta para registrar usuarios en la base de datos con Sequelize
 router.post('/register', async (req, res) => {
     const { nombre, apellidos, email, password } = req.body;
 
@@ -31,12 +32,12 @@ router.post('/register', async (req, res) => {
     }
 });
 
-// 🔹 Ruta para mostrar el formulario de login
-router.get("/login", (req, res) => {
+// Ruta para mostrar el formulario de login
+router.get("/login", redirectIfAuthenticated, (req, res) => {
     res.render("pages/login");
 });
 
-// 🔹 Ruta para iniciar sesión con Sequelize
+// Ruta para iniciar sesión con Sequelize
 router.post("/login", async (req, res) => {
     const { email, password } = req.body;
 
@@ -61,7 +62,7 @@ router.post("/login", async (req, res) => {
     }
 });
 
-// 🔹 Ruta para cerrar sesión
+// Ruta para cerrar sesión
 router.get("/logout", (req, res) => {
     req.session.destroy(err => {
         if (err) {

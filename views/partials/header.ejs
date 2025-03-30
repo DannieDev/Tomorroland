@@ -10,54 +10,53 @@
         <i class="fa-solid fa-bars"></i>
       </button>
       <ul class="navbar-nav mx-auto">
-        <li class="nav-item">
-          <a href="/" class="logo-container">
-            <img src="/img/logo.jpg" alt="Logo Tomorrowland" class="logo">
-          </a>
-        </li>
-        <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Festival y Eventos</a>
-          <div class="dropdown">
-            <ul>
-              <li><a href="/belgica">Tomorrowland Bélgica</a></li>
-              <li><a href="#">Invierno de Tomorrowland</a></li>
-              <li><a href="#">Tomorrowland Brasil</a></li>
-              <li><a href="#">Tomorrowland Presenta</a></li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Música</a>
-          <div class="dropdown">
-            <ul>
-              <li><a href="/radio">One World Radio</a></li>
-              <li><a href="#">Tomorrowland Music</a></li>
-              <li><a href="#">Tomorrowland Academy</a></li>
-              <li><a href="#">One World Artists</a></li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav-item"><a class="nav-link" href="/experience">Experiencias</a></li>
-        <li class="nav-item"><a class="nav-link" href="/store">Tienda</a></li>
-        <li class="nav-item"><a class="nav-link" href="/Mas">Más</a></li>
-        <li class="nav-item"><a class="nav-link" href="/contact">Contacto</a></li>
-        <!-- 💡 Contenedor de la derecha con botón de sesión y buscador -->
-        <div class="navbar-right">
-          <% if (usuario) { %>
-            <a href="/auth/logout" class="account-btn">
-              <i class="fa fa-sign-out-alt"></i> Cerrar sesión
+
+        <!-- Logo dinámico -->
+        <% if (headerConfig) { %>
+          <li class="nav-item">
+            <a href="<%= headerConfig.logo_link %>" class="logo-container">
+              <img src="<%= headerConfig.logo_url %>" alt="<%= headerConfig.logo_alt %>" class="logo">
             </a>
-          <% } else { %>
-            <a href="/auth/login" class="account-btn">
-              <i class="fa fa-sign-in-alt"></i> Iniciar Sesión
-            </a>
+          </li>
           <% } %>
-          <div class="search-container">
-            <i class="fa-solid fa-magnifying-glass search-icon"></i>
-            <input type="text" class="search-input" placeholder="Buscar...">
-          </div>
-        </div>
+
+            <!-- Menú dinámico -->
+            <% menuItems.forEach(menu=> { %>
+              <li class="nav-item">
+                <a class="nav-link" href="<%= menu.url %>">
+                  <%= menu.titulo %>
+                </a>
+
+                <% if (menu.tiene_dropdown && menu.submenus && menu.submenus.length> 0) { %>
+                  <div class="dropdown">
+                    <ul>
+                      <% menu.submenus.forEach(sub=> { %>
+                        <li><a href="<%= sub.url %>">
+                            <%= sub.titulo %>
+                          </a></li>
+                        <% }) %>
+                    </ul>
+                  </div>
+                  <% } %>
+              </li>
+              <% }) %>
+
+                <!-- 💡 Contenedor derecho: sesión + buscador -->
+                <div class="navbar-right">
+                  <% if (usuario) { %>
+                    <a href="/auth/logout" class="account-btn">
+                      <i class="fa fa-sign-out-alt"></i> Cerrar sesión
+                    </a>
+                    <% } else { %>
+                      <a href="/auth/login" class="account-btn">
+                        <i class="fa fa-sign-in-alt"></i> Iniciar Sesión
+                      </a>
+                      <% } %>
+                        <div class="search-container">
+                          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                          <input type="text" class="search-input" placeholder="Buscar...">
+                        </div>
+                </div>
       </ul>
     </div>
   </nav>

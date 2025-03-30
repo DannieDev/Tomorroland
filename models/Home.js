@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/db");
 
-const Articulo = sequelize.define("Articulo", {
+const Home = sequelize.define("Home", {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -23,15 +23,16 @@ const Articulo = sequelize.define("Articulo", {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,
     },
-    categoria: {
-        type: DataTypes.STRING(100),
-        allowNull: false,
-        defaultValue: "general",
-    },
+    updated_at: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+        onUpdate: DataTypes.NOW, // Esto asegurará que se actualice automáticamente
+    }
     
 }, {
-    tableName: "articulos", // Asegura que el nombre de la tabla coincida
+    tableName: "home", // Asegura que el nombre de la tabla coincida
     timestamps: false, // Evita que Sequelize agregue `createdAt` y `updatedAt` automáticamente
+    underscored: true, // Evita que Sequelize convierta el nombre de la tabla a plural
 });
 
-module.exports = Articulo;
+module.exports = Home;

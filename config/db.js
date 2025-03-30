@@ -12,9 +12,9 @@ const sequelize = new Sequelize("tomorroland_db", "dannie", "35946", {
 (async () => {
     try {
         await sequelize.authenticate();
-        //console.log("Conectado a la base de datos MySQL con Sequelize");
+        console.log("Conectado a la base de datos MySQL con Sequelize");
     } catch (error) {
-        //console.error("Error de conexión: ", error);
+        console.error("Error de conexión: ", error);
     }
 })();
 

@@ -4,47 +4,58 @@ const sequelize = require("../config/db");
 const Experiencia = sequelize.define("Experiencia", {
     id: {
         type: DataTypes.INTEGER,
+        autoIncrement: true,
         primaryKey: true,
-        autoIncrement: true
     },
     titulo: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.STRING(255),
+        allowNull: false,
     },
     descripcion: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.TEXT,
+        allowNull: false,
     },
     imagen: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.STRING(255),
+        allowNull: true,
     },
-    boton_texto: {
-        type: DataTypes.STRING,
-        allowNull: false
+    fecha: {
+        type: DataTypes.STRING(100),
+        allowNull: true,
+    },
+    ubicacion: {
+        type: DataTypes.STRING(255),
+        allowNull: true,
     },
     tipo: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.ENUM("hero", "evento", "noticia"),
+        allowNull: false,
     },
-    fecha: { 
-        type: DataTypes.DATE 
-    },
-    ubicacion: { 
-        type: DataTypes.STRING,
-        allowNull: false
+    boton_texto: {
+        type: DataTypes.STRING(255),
+        allowNull: true,
     },
     boton_info: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.STRING(255),
+        allowNull: true,
     },
     boton_registro: {
-        type: DataTypes.STRING,
-        allowNull: false
-    }
+        type: DataTypes.STRING(255),
+        allowNull: true,
+    },
+    created_at: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+    },
+    updated_at: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+        onUpdate: DataTypes.NOW // Se actualizará automáticamente en cada modificación
+    },
 }, {
     tableName: "experiencias",
-    timestamps: false
+    timestamps: false, // Sequelize no agregará automáticamente `createdAt` y `updatedAt`
+    underscored: true,
 });
 
 module.exports = Experiencia;
