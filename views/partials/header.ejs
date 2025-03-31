@@ -41,22 +41,27 @@
               </li>
               <% }) %>
 
-                <!-- 💡 Contenedor derecho: sesión + buscador -->
-                <div class="navbar-right">
-                  <% if (usuario) { %>
-                    <a href="/auth/logout" class="account-btn">
-                      <i class="fa fa-sign-out-alt"></i> Cerrar sesión
-                    </a>
-                    <% } else { %>
-                      <a href="/auth/login" class="account-btn">
-                        <i class="fa fa-sign-in-alt"></i> Iniciar Sesión
-                      </a>
-                      <% } %>
-                        <div class="search-container">
-                          <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                          <input type="text" class="search-input" placeholder="Buscar...">
-                        </div>
-                </div>
+                <% if (usuario && usuario.rol==='admin' ) { %>
+                  <a href="/dashboard" class="button-admin">Admin</a>
+
+                  <% } %>
+
+                    <!-- 💡 Contenedor derecho: sesión + buscador -->
+                    <div class="navbar-right">
+                      <% if (usuario) { %>
+                        <a href="/auth/logout" class="account-btn">
+                          <i class="fa fa-sign-out-alt"></i> Cerrar sesión
+                        </a>
+                        <% } else { %>
+                          <a href="/auth/login" class="account-btn">
+                            <i class="fa fa-sign-in-alt"></i> Iniciar Sesión
+                          </a>
+                          <% } %>
+                            <div class="search-container">
+                              <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                              <input type="text" class="search-input" placeholder="Buscar...">
+                            </div>
+                    </div>
       </ul>
     </div>
   </nav>

@@ -44,17 +44,22 @@ router.post("/login", async (req, res) => {
     try {
         const user = await User.findOne({ where: { email } });
         if (!user) {
-            return res.redirect("/login?error=Usuario no encontrado");
+            return res.redirect("/auth/login?error=Usuario no encontrado");
         }
 
-        // Comparar contraseñas
         const validPassword = await bcrypt.compare(password, user.password);
         if (!validPassword) {
-            return res.redirect("/login?error=Contraseña incorrecta");
+            return res.redirect("/auth/login?error=Contraseña incorrecta");
         }
 
-        // Guardar usuario en sesión
-        req.session.usuario = { id: user.id, nombre: user.nombre, email: user.email };
+        // GUARDAR rol en la sesión
+        req.session.usuario = {
+            id: user.id,
+            nombre: user.nombre,
+            email: user.email,
+            rol: user.rol // <-- Asegúrate de tener esta línea
+        };
+
         res.redirect("/");
     } catch (error) {
         console.error("Error en el login:", error);

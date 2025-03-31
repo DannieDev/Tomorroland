@@ -16,8 +16,10 @@ h2 {
 }
 
 .header {
-    background: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
-    backdrop-filter: blur(10px);          /* Efecto de desenfoque */
+    background: rgba(255, 255, 255, 0.1);
+    /* Fondo semitransparente */
+    backdrop-filter: blur(10px);
+    /* Efecto de desenfoque */
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     position: fixed;
     top: 0;
@@ -115,7 +117,6 @@ h2 {
     visibility: visible;
 }
 
-
 .maine-menu .navbar-nav li .dropdown {
     display: none;
     position: absolute;
@@ -146,8 +147,6 @@ h2 {
     border-radius: 5px;
 }
 
-
-
 .maine-menu .navbar-nav li .dropdown ul li a:hover {
     background: none;
     border-bottom: 3px solid #3A98FF;
@@ -155,7 +154,7 @@ h2 {
 }
 
 .maine-menu .navbar-nav li:hover>a {
-    color: rgba(255, 255, 255,);
+    color: rgba(255, 255, 255, );
 }
 
 .maine-menu .navbar-nav li.active>a {
@@ -196,6 +195,26 @@ h2 {
     border: 2px solid #3a98ff;
     color: white;
     box-shadow: 0 0 10px rgba(58, 152, 255, 0.6);
+}
+
+/* Botón Admin*/
+.button-admin {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    background: transparent;
+    border-radius: 6px;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+.button-admin:hover,
+.button-admin.active {
+    background: rgba(58, 152, 255, 0.2);
+    box-shadow: 0 0 10px rgba(58, 152, 255, 0.6);
+    border: 1px solid #3a98ff;
 }
 
 /*Buscador**/
@@ -285,13 +304,17 @@ h2 {
     }
 
     .navbar-nav .nav-item {
-        margin: 10px 0; /* Reducir este margen */
+        margin: 10px 0;
+        /* Reducir este margen */
     }
-    
+
     .navbar-nav .nav-item a {
-        font-size: 18px; /* Tamaño ajustado para mayor legibilidad */
-        padding: 5px 15px; /* Reducir padding interno */
-        margin: 2px 0; /* Menos margen entre títulos */
+        font-size: 18px;
+        /* Tamaño ajustado para mayor legibilidad */
+        padding: 5px 15px;
+        /* Reducir padding interno */
+        margin: 2px 0;
+        /* Menos margen entre títulos */
     }
 
     .navbar-toggler {
@@ -310,7 +333,7 @@ h2 {
 
     .navbar-nav {
         display: none;
-        align-items: flex-start; 
+        align-items: flex-start;
         flex-direction: column;
         padding: 10px;
     }
@@ -330,7 +353,8 @@ h2 {
     .navbar-nav.menu-open {
         display: flex;
         flex-direction: column;
-        background: rgba(0, 0, 0, 0.9); /* Fondo más oscuro y sólido */
+        background: rgba(0, 0, 0, 0.9);
+        /* Fondo más oscuro y sólido */
         padding: 10px;
     }
 
@@ -341,7 +365,8 @@ h2 {
     .maine-menu .navbar-nav li .dropdown {
         position: absolute;
         top: 0;
-        left: 100%; /* Aparece al lado derecho */
+        left: 100%;
+        /* Aparece al lado derecho */
         background: rgba(0, 0, 0, 0.9);
         width: 220px;
         padding: 10px;
@@ -349,7 +374,7 @@ h2 {
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
         z-index: 1000;
     }
-    
+
 }
 
 .maine-menu .navbar-nav li:hover .dropdown {

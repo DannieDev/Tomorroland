@@ -24,6 +24,10 @@ const User = sequelize.define("User", {
         type: DataTypes.STRING(255),
         allowNull: false,
     },
+    rol: {
+        type: DataTypes.STRING,
+        defaultValue: 'user'
+    },
     created_at: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW
@@ -32,9 +36,7 @@ const User = sequelize.define("User", {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,
         onUpdate: DataTypes.NOW // Se actualizará automáticamente en cada modificación
-    }
-
-    
+    },
 }, {
     tableName: "usuarios", // Asegurar que coincide con la base de datos
     timestamps: false,

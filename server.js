@@ -10,7 +10,7 @@ const methodOverride = require('method-override');
 // Middlewares personalizados
 const cargarMenu = require('./middlewares/menuMiddleware');
 const { exposeUserToViews } = require('./middlewares/sessionMiddleware');
-const { ensureAuthenticated } = require('./middlewares/authMiddleware');
+const { ensureAuthenticated, ensureAdmin } = require('./middlewares/authMiddleware');
 
 // Rutas
 const mainRoutes = require('./routes/index');
@@ -77,7 +77,7 @@ app.use((req, res, next) => {
 app.use('/', mainRoutes);                      // Página pública principal
 app.use('/auth', authRoutes);                  // Registro / Login
 app.use('/admin/belgica', belgicaRoutes);      // CRUD de sección Bélgica
-app.use('/dashboard', ensureAuthenticated, dashboardRoutes); // Dashboard protegido
+app.use('/dashboard', ensureAuthenticated, ensureAdmin, dashboardRoutes); // Dashboard protegido
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
 

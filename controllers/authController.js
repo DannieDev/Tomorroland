@@ -23,8 +23,9 @@ const register = async (req, res) => {
             apellidos,
             email,
             password: hashedPassword,
+            rol: 'user',
         });
-
+        console.log("Usuario logueado:", req.session.usuario);
         res.redirect("/login");
     } catch (error) {
         console.error("Error en el registro:", error);
@@ -53,6 +54,7 @@ const login = async (req, res) => {
             id: usuario.id,
             nombre: usuario.nombre,
             email: usuario.email,
+            rol: usuario.rol,
         };
 
         res.redirect("/");
