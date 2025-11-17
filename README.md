@@ -43,42 +43,42 @@ Este proyecto demuestra habilidades de desarrollo **full-stack**, diseño de API
 ## 📂 Estructura del proyecto
 Tomorroland/
 ├── config/
-│ └── db.js
+│   └── db.js
 ├── controllers/
-│ ├── authController.js
-│ ├── belgicaController.js
-│ ├── dashboardController.js
-│ ├── experienciaController.js
-│ ├── homeController.js
-│ └── radioController.js
+│   ├── authController.js
+│   ├── belgicaController.js
+│   ├── dashboardController.js
+│   ├── experienciaController.js
+│   ├── homeController.js
+│   └── radioController.js
 ├── middlewares/
-│ ├── authMiddleware.js
-│ ├── menuMiddleware.js
-│ ├── sessionMiddleware.js
-│ ├── upload.js
-│ └── validationMiddleware.js
+│   ├── authMiddleware.js
+│   ├── menuMiddleware.js
+│   ├── sessionMiddleware.js
+│   ├── upload.js
+│   └── validationMiddleware.js
 ├── models/
-│ ├── Belgica.js
-│ ├── Experiencia.js
-│ ├── HeaderConfig.js
-│ ├── Home.js
-│ ├── Menu.js
-│ ├── Radio.js
-│ ├── Submenu.js
-│ └── User.js
+│   ├── Belgica.js
+│   ├── Experiencia.js
+│   ├── HeaderConfig.js
+│   ├── Home.js
+│   ├── Menu.js
+│   ├── Radio.js
+│   ├── Submenu.js
+│   └── User.js
 ├── public/
-│ ├── css/
-│ ├── img/
-│ └── js/
+│   ├── css/
+│   ├── img/
+│   └── js/
 ├── routes/
-│ ├── auth.js
-│ ├── belgica.js
-│ ├── dashboard.js
-│ └── index.js
+│   ├── auth.js
+│   ├── belgica.js
+│   ├── dashboard.js
+│   └── index.js
 ├── views/
-│ ├── belgica/
-│ ├── pages/
-│ └── partials/
+│   ├── belgica/
+│   ├── pages/
+│   └── partials/
 ├── server.js
 ├── package.json
 └── package-lock.json
