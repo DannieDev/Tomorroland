@@ -41,6 +41,9 @@ Este proyecto demuestra habilidades de desarrollo **full-stack**, diseño de API
 - **MySQL** conectado mediante **Sequelize**
 
 ## 📂 Estructura del proyecto
+
+---
+
 Tomorroland/
 ├── config/
 │   └── db.js
@@ -82,6 +85,15 @@ Tomorroland/
 ├── server.js
 ├── package.json
 └── package-lock.json
+
+---
+
+## ⚙ Configuración e instalación
+
+### 1. Clonar repositorio
+```bash
+git clone https://github.com/DannieDev/Tomorroland.git
+
 
 ## 🛠️ Instalación y ejecución
 
